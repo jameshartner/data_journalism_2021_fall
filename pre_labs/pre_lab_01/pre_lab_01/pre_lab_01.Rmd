@@ -1,7 +1,7 @@
 ---
 title: "pre_lab_01.Rmd"
-author: ""
-date: ""
+author: "James Hartner"
+date: "09022021"
 output: html_document
 ---
 
@@ -128,7 +128,7 @@ ppp_maryland_loans %>%
 ```
 How many loans does Anne Arundel County have?  Put your answer in the space below.
 **Answer**
-
+There were 17336 Loans for Anne Arundel County.
 ### Task 7
 **Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, count the number of loans in that group, and then sort so the county with the highest number of loans is listed first.
 ```{r}
@@ -140,8 +140,7 @@ ppp_maryland_loans %>%
   arrange(desc(count_loans))
 ```
 Which county has the most loans?  Put your answer in the space below.
-**Answer**
-
+**Answer** Montgomery has the most loans 
 ### Task 8
 **Task** Run the following codeblock to group the ppp_maryland_loans dataframe by county and race, then count the number of loans in that group, and then sort from A-Z by county and then by race.
 ```{r}
@@ -155,7 +154,7 @@ ppp_maryland_loans %>%
 
 How many records were there for White loans in Anne Arundel County, according to the data?  Put your answer in the space below.
 **Answer**
-
+1854
 ### Task 9
 **Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, and then count the number of loans in that group and add up the value of all loans in that group. Then sort so the county with the highest total loan dollar amount is listed first.
 ```{r}
@@ -169,7 +168,7 @@ ppp_maryland_loans %>%
 ```
 Which county has the highest total dollar amount of loans?  Put your answer in the space below.
 **Answer**
-
+$10,000,000
 ### Task 10
 **Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan. Then do the following summarizations for each group:count the number of loans , add up the value of all loans, and calculate the mean and median loan amounts. Then sort so the county with the highest mean dollar amount is listed first.
 ```{r}
