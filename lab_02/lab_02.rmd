@@ -107,8 +107,12 @@ It seems that the top 10 lenders are all banks of course. However, it seems that
 March had the most approved loans of 2021 with 4404 loans.
 ```{r}
 # Write the code to produce your answer here
+# The Textbook helped me with this code (chapter Eight)
 west_virginia_ppp %>%
-  mutate(Month = floor_date(date_approved, "month")) %>%
+  mutate(
+    Month = floor_date(date_approved, "month"
+      )
+    ) %>%
   group_by(Month) %>%
   summarise(total = n()) %>%
   arrange(desc(total))
