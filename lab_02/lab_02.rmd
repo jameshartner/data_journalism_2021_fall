@@ -1,7 +1,7 @@
 ---
 title: "lab_02"
-author: "derek willis"
-date: "8/24/2021"
+author: "James Hartner"
+date: "9/9/2021"
 output: html_document
 ---
 
@@ -48,27 +48,68 @@ west_virginia_ppp <- read_rds("lab_02.rds")
 
 **Q1** Create a new column that divides the loan amounts into multiple options: under_10k, 10k_50k, 50k_100k, 100k_500k, 500k_1m, 1m_plus. How many loans are in each group? You will need to use `case_when` to make this work and there's an example of this in the book chapter on mutate.
 **A1** [write your answer here]
+The groups are as followed:
+1.) Under 10k has 9310 loans.
+2.) Between 10k and 50k has 15372 loans.
+3.) Between 50k and 100k has 3978 loans.
+4.) Between 100k and 500k has 4152 loans.
+5,) Between 500k and one million has 540 loans.
+6.) One million plus 356 loans. 
+
+Credit for helping me with the case_when function was the textbook and https://www.sharpsightlabs.com/blog/case-when-r/
 
 ```{r}
 # Write the code to produce your answer here
-
+total_amount <- west_virginia_ppp %>%
+  mutate(
+    total_amount = case_when(
+      amount < 10000 ~ 'under 10k', 
+      amount >= 10000 & amount <50000 ~ 'Between 10k and 50k',
+      amount >= 50000 & amount < 100000 ~ 'Between 50k and 100k',
+      amount >= 100000 & amount < 500000 ~ 'Between 100k and 500k',
+      amount >= 500000 & amount <1000000 ~ 'Between 500k and 1mill',
+      amount >= 1000000~ '1m_plus',
+      TRUE~ 'Broken'
+    )
+  )
+total_amount %>%
+  group_by(total_amount) %>%
+  summarise(
+    count_loans = n()
+  ) %>%
+  arrange(desc(count_loans))
 ```
 
 **Q2** Which servicing lenders have the most loans with undisbursed amounts greater than 0?
 **A2** [write your answer here]
-
+United Bank has the most loans with undisbursed amounts greater than 0. United Bank has 3194 loans.
 ```{r}
 # Write the code to produce your answer here
-
+servicing<- west_virginia_ppp %>%
+  mutate( 
+    case_when(
+      undisbursed_amount >0 ~ 'servicing lender loan'
+    )
+  )
+servicing %>%
+  group_by(servicing_lender_name) %>%
+  summarise(
+    count_loans = n()
+  ) %>%
+  arrange(desc(count_loans))
 ```
 
 **Q3** How would you describe the top 10 list of those lenders? What do they have in common or not? (You may want to look up some of the top ones.)
 **A3** [write your answer here]
-
+It seems that the top 10 lenders are all banks of course. However, it seems that many of them are rather larger bank corporations like United Bank, Premier Bank and WesBanco Bank. It seems that a lot of them actually have many locations across many states. First Community Bank, for example, has banks located in West Virginia, Virginia, Maryland and Pennsylvania. Summit Community Bank is another example. These are large bank corporations. 
 **Q4** Which month in 2021 had the most loans approved?
 **A4** [write your answer here]
-
+March had the most approved loans of 2021 with 4404 loans.
 ```{r}
 # Write the code to produce your answer here
-
+west_virginia_ppp %>%
+  mutate(Month = floor_date(date_approved, "month")) %>%
+  group_by(Month) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
 ```
