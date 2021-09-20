@@ -34,6 +34,7 @@ Q1: Which five cities located in Kanawha County, West Virginia got the most loan
 Note: To answer this question, please fully clean the city field for Kanawha County cities. Hint: once cleaned, the dataframe that counts the number of loans by city should have 38 distinct cities for Kanawha County.
 
 A1:
+The five cities located in Kanawha County received the most loans were Charleston with 2836 loans, South Charleston with 485 loans, Saint Albans with 304 loans, Dunbar with 166 loans and Nitro with 142 loans. 
 ```{r}
 glimpse(wv_ppp_loans)
 # Write your code in this codeblock.
@@ -77,7 +78,7 @@ Q2: What is the name of the business that got the largest loan (by dollar value)
 * Which number is bigger, the loan amount or the forgiveness amount? Can you explain the discrepancy?
 
 A2: 
-
+The name of the business that got the largest loan was "Jackson Kelly PLLC" with an amount of $5068472. This company is located in 25301 and the amount that was forgiven was 5126618.6 dollars. It seems that the forgiveness amount was larger. I feel that the forgiveness amount is higher possibly because of the amount of the loan that was used in payroll. The column of "payroll_processed" was the exact same as the amount of the loan. I also feel that the amount was higher because the business is in multiple locations across the United States, so I feel that maybe the company took out loans in different states and the SBA marked down some of the forgiveness to the West Virginia location. 
 ```{r}
 # Hint
 # First, create a dataframe that shows the top 5-digit ZIP code by total dollar amount
@@ -118,12 +119,23 @@ Some hints to help you answer this question:
 * This is a link to details on passage of the [CARES ACT](https://www.congress.gov/bill/116th-congress/house-bill/748). You can find a link to how the House voted by clicking on a link from [this page](https://www.congress.gov/bill/116th-congress/house-bill/748/actions).
 
 A3:
+Business Names:
+DM Motors
+Dutch Miller Chevrolet
+Dutch Miller of Charleston 
+Dutch Miller of Charlotte
+Dutch Miller Subaru
+The businesses sells cars. It seems that DM Motors was not attached to the loan or my searching skills were not that great, but the other four accounted for was 2,656,400 dollars. 
 
 ```{r}
 
 # Hint
 # First, create a dataframe that only has loans to those five companies
-
+question3<-west_virginia_ppp %>%
+  mutate(name=case_when(
+    str_detect(name, "DUTCH MILLER OF CHARLESTON,INC|Dutch MILLER OF CHARLOTTE,INC|DUTCH MILLER SUBARU|DUTCH MILLER CHEVEROLET")~ "Rep3",
+               TRUE~name
+  ))
 # Second, use that newly created dataframe to calculate total loan amount and percentage forgiven for those companies
 
 ```
