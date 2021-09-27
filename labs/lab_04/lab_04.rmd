@@ -1,7 +1,7 @@
 ---
 title: "lab_04"
-author: "derek willis"
-date: "8/24/2021"
+author: "James Hartner"
+date: "9/23/2021"
 output: html_document
 ---
 
@@ -38,6 +38,7 @@ Let's keep working with Maryland loan applications contained in the PPP data.
 **Task** Read in the lab_04.rds file and assign it to the variable `maryland_ppp`.
 
 ```{r}
+maryland_ppp <- read_rds("lab_04.rds")
 # add code here to accomplish the task
 ```
 
@@ -48,6 +49,7 @@ First, let's load the NAICS code CSV file we have in the data folder:
 **Task** Read in the naics_codes.csv file and assign it to the variable `naics_codes`.
 
 ```{r}
+naics_codes <- read_csv('data/naics_codes.csv')
 # add code here to accomplish the task
 ```
 
@@ -56,6 +58,9 @@ Next join the two and then create a 5-character `zip5` column that we can use to
 **Task** Write code to join the maryland_ppp and naics_codes data, assigning the result to a new variable. Then add a new `zip5` column.
 
 ```{r}
+
+maryland_ppp_combined <- maryland_ppp %>% left_join(naics_codes) %>%
+  mutate(zip5 = str_sub(zip, start=1L, end=5L)) 
 # add code here to accomplish the task
 ```
 
@@ -64,6 +69,8 @@ Let's add the Zip Code Tabulation Area dataset. You'll need to make the `ZCTA5N`
 **Task** Read in the Zip Code Tabulation Area dataset in the data folder and change the datatype of the `ZCTA5N` column to character.
 
 ```{r}
+maryland_zcta <- read_csv('data/maryland_zcta.csv')
+maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
 # add code here to accomplish the task
 ```
 
@@ -72,6 +79,8 @@ Now we can join the PPP data to the ZCTA data:
 **Task** Join the Maryland PPP data (with NAICS already joined) with the ZCTA data, specifying the join column in both dataframes.
 
 ```{r}
+md_naics_zcta<- maryland_ppp_combined %>% 
+  left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
 # add code here to accomplish the task
 ```
 
@@ -79,51 +88,127 @@ Now we can join the PPP data to the ZCTA data:
 
 **Q1** What are the top 5 industries (using the NAICS title) with the most PPP applications in Maryland?
 **A1** [write your answer here]
+The top 5 industries NAICS titles are: 
+1.) 
+485310 (Taxi Service) which has 7363 loans.
+2.)
+812112 (Beauty Salons) which has 7275 loans.
+3.)
+722511 (Full Service Restaurants) which has 5490 loans. 
+4.)
+531210 (Offices of Real Estate Agents and Brokers) which has 4443 loans.
+5.) 
+812990 (All other personal services) which has 3956 loans.
 
 ```{r}
+total_loans <- md_naics_zcta %>%
+  group_by(naics_code) %>%
+  summarise(
+    count_loans = n()
+  ) %>%
+  arrange(desc(count_loans))
 # Write the code to produce your answer here
 ```
 
 **Q2** What are the top industries (using the NAICS title) with the most PPP applications in Maryland where the loan amount is more than $150,000?
 **A2** [write your answer here]
+The top industries with the most PPP applications in Maryland with a loan amount of more than $150,000 are full-service restaurants.
 
 ```{r}
 # Write the code to produce your answer here
-
+total_amount <- md_naics_zcta %>%
+  mutate(
+    total_amount= case_when(
+      amount > 150000 ~ 'Over 150k',
+      TRUE~ 'UNDER 150K'
+    )
+  )
+total_amount %>% 
+  filter(total_amount== 'Over 150k') %>%
+  group_by(title, total_amount) %>%
+  summarise(
+    count_loans = n()
+  ) %>%
+  arrange(desc(count_loans))
 ```
 
 **Q3** Which Maryland zip code with at least 20 percent non-Hispanic Asian population had the largest sum of PPP loans? Also show the number (count) of loans.
 **A3** [write your answer here]
-
+The zip code that had the largest sum of PPP loans (with a population of at least 20 percent non-Hispanic Asian populations) was 20850.
 ```{r}
 # Write the code to produce your answer here
-
+md_naics_zcta %>%
+  filter(PNHA >= 20) %>%
+  group_by(zip5) %>%
+  summarize(
+   count= n(),
+   sumamt= sum(amount)) %>%
+  arrange(desc(count))
 ```
 
 **Q4** Which Maryland zip code had the largest sum of loans where the reported race of the applicant was "Asian", and what is the percentage of non-Hispanic Asian population in that zip code? Also show the number (count) of loans.
 **A4** [write your answer here]
+The zip code that had the largest sum of loans was 20850.  The percentage of population was 23.5% and the number of loans in that zip code was 3186 loans. The number of loans for owners who listed their race as Asian was 240 loans.
 
 ```{r}
 # Write the code to produce your answer here
+md_naics_zcta %>%
+filter(race== 'Asian') %>%
+group_by(zip5) %>% 
+summarize(
+  count=n(),
+  sum=sum(amount)
+) %>%
+  arrange(desc(count))
 
+md_naics_zcta %>%
+  filter(zip5=='20850') %>%
+  group_by(zip5, PNHA) %>%
+  summarize(
+    count=n(),
+    sum_amount=sum(amount)
+  )
+#The percentage is 23.5%
 ```
 
 **Q5** What might explain why 20850 has a significant Asian population (23.5%) and only 240 of the 3,186 loans (7.5%) are to Asian applicants?
 **A5** [write your answer here]
+The reasoning behind this is possibly because some loan applicants used the "N/A" answer and chose to remain anonymous. Also, even though the population is high, people owning businesses in that area could possibly live in a different zip code. For example, at a business I used to work at, the owner lived in Columbia but the store was located in Eldersburg which are different zip codes. 
 
 
 **Q6** Find any Maryland zip codes that have loans where the PPP data lists the applicants as being Asian but where the zip code does not appear to have Asian population in the ZCTA data? What do you think is going on here?
 **A6** [write your answer here]
-
+The company is located at the zip code that doesn't have an Asian population possibly because some owners could live in a different zip code and travel to their business. 
 ```{r}
 # Write the code to produce your answer here
+md_naics_zcta %>%
+  filter(race=='Asian') %>%
+  filter(PNHA=='0') %>%
+group_by(zip5, PNHA) %>%
+  summarize(
+    count=n())
 
 ```
 
 **Q7** How many industries have exactly one loan in the data (hint: you can filter _after_ using `summarise` on any totals you create). From a newsworthiness standpoint, which of these is most worthy of further exploration, and why?
 **A7** [write your answer here]
+There are 44 industries that have only one loan in the data. There are quite a few industries that are most worthy of further exploration. These industries are:
 
+1.) Casinos (except Casino Hotels)
+2.) Credit Card Issuing 
+3,) Ammunition (except small arms) manufacturing/Small Arms Ammunition Manufacturing
+4.) Guided Missile and Space Vehicle Manufacturing
+5.) Junior Colleges	
+I think these are most newsworthy because of the amount of money that these types of industries make, Casinos and credit card issuing especially. Those industries make millions of dollars a year. I understand that the casinos were closed for a large part of COVID, but at the same time the revenue of those types of businesses should allow the place to stay afloat for a long period of time. According to playmaryland.com, Maryland casinos made $172,394,450 revenue in May of 2021. Those numbers are insane for just a month (granted, the list showed six casinos in Maryland totaling that revenue, but of those casinos, the lowest amount of revenue was just a little over six million dollars for May). The credit card one is another interesting one as well. I feel that when the pandemic hit and there was a national coin shortage, those types of companies would be making some serious bank, since people would need a credit card to purchase something. 
 ```{r}
+
 # Write the code to produce your answer here
+md_naics_zcta %>%
+  group_by(title) %>%
+  summarize(
+    count_loans=n()) %>%
+filter(count_loans=='1')
+  
+
 
 ```
