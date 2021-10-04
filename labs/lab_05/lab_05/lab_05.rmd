@@ -1,7 +1,7 @@
 ---
 title: "lab_05"
-author: "Sean Mussenden"
-date: "8/24/2021"
+author: "James Hartner"
+date: "9/30/2021"
 output: html_document
 ---
 
@@ -28,7 +28,7 @@ You'll need to load two packages for this: the tidyverse and janitor.
 ```{r}
 # Turn off scientific notation
 options(scipen=999)
-
+library(tidyverse)
 ```
 
 ## Load Data
@@ -40,7 +40,12 @@ You'll need to load three data sets for this:
 * A table of West Virginia population by county (American Community Survey, 2019 5-year averages) (wv_population_county.csv).
 
 All three data sets are in the data folder.  Write code to load the three in the codeblock below.
+```{r}
+west_virginia_ppp <- read_rds('data/lab_05.rds') 
+naics_codes <- read_csv('data/naics_codes.csv')
+county_pop <- read_csv('data/wv_population_county.csv')
 
+```
 **Task** Create a codeblock below this task, then read the data sets in in and assign them to appropriate variable names. There's a fourth data set you'll use in this lab, too, of selected loans in ZIP Code 25401. But there's no need to load it now.
 
 ## Answer questions
@@ -63,9 +68,28 @@ Then answer these questions:
 * What are the names of the businesses at that address?
 
 **A1.**
+The street address that has the most loans is 126 East Burke Street with six loans. The businesses are:
+
+1.) Drew Holdings LLC
+2.) Brix 27 LLC
+3.) Abraham Ashton
+4.) Hub Co-Op LLC
+5.) Hub Co-Op, LLC
+6.) Ronin Properties LLC
+
 
 ```{r}
+west_virginia_zip <- read.csv('data/zip_25401_loan_sample_refine.csv')
 
+west_virginia_zip %>%
+  group_by(address) %>%
+  summarize(
+    count_loans=n()
+  ) %>%
+  arrange(desc(count_loans))
+ 
+west_virginia_zip %>%
+filter(address== '126 E Burke St')
 ```
 
 **Q2.** Do some web research on the businesses that answered question 1.  
@@ -75,7 +99,7 @@ Google the street address.  Google the business names and search for their corpo
 Based on your research, does it seem suspicious that this collection of businesses all got loans using the same address? Why or why not. Use specific facts identified in your research to support your position. 
 
 **A2.**
-
+It doesn't seem super suspicious. One of the company's is listed as the Hub Co-Op (They're actually listed twice). It seems that this is like a communial office space. However, there is this one person who is tied to all of these loans or the majority of them. The person's name is Abraham Ashton.
 **Q3.** Start by using the West Virginia slice of the PPP loan data that you loaded at the start of the lab to create a subset of PPP loans in West Virginia's second largest county (which you can find in wv_population_county). And then use that table you created to answer the following questions:
 
 * Which city in that county had the highest number of loans? 
@@ -86,14 +110,39 @@ Requirement: you MUST export a dataframe of PPP loans from R Studio at some poin
 Guidance: there are a lot of steps you'll need to take to answer this question. You may or may not find it helpful to write out in English what you plan to do step-by-step before you start writing code.   
 
 **A3.**
+Martinsburg was the city that had the highest number of loans. The industry title for the most loans was Full-service restaurants.
 
 ```{r}
+county_pop %>%
+  arrange(desc(population_2019))
+#Berkeley is the second highest populated county.
+west_virginia_Berkeley <- west_virginia_ppp %>%
+  filter(project_county_name=="BERKELEY")
 
+#write_csv(west_virginia_Berkeley, path='data/berkeley_loans.csv')
+#I put this in a comment because I didn't want to keep uploading a file
+berkeley_filtered<-read.csv('data/berkeley_loans_refined.csv')
+berkeley_filtered %>%
+  group_by(city) %>%
+    summarize(
+      count_loans=n()
+    ) %>%
+    arrange(desc(count_loans))
+Martinsburg<-berkeley_filtered %>%
+  filter(city=='Martinsburg')
+Martinsburg %>%
+  left_join(naics_codes) %>%
+  group_by(title) %>%
+  summarize(
+    count=n()
+  ) %>%
+  arrange(desc(count))
 ```
 
 **Q4.** What are your two best hypotheses, which you'd need to confirm with reporting and further analysis, that explain why that industry is at the top of the list?
 
 **A4.** 
+While looking in the data, there are a couple NA titles, which could either mean that Full-service restaurants are not up top actually. 
 
 **Q5.** Start with a table of loans to all businesses in the city and industry that answered question 3. Answer the following questions:
 * What is the name of the business that got the highest approved loan amount? 
@@ -107,3 +156,14 @@ Guidance: there are a lot of steps you'll need to take to answer this question. 
 Hint: you will not find the answers to the last three questions in the data.  You could call them directly to get that information, but I don't want you to do that for this assignment.  Instead, do some web research. I would start by Googling the company name from the data and looking at the page that comes up for the business from at http://apps.sos.wv.gov/. I would use information I found on that page and use info about the company from Google, the [Wayback machine](https://archive.org/web/) (which lets you look at older versions of a company's website), Yelp, and Facebook. 
 
 **A5.**
+I found that the top business was called SHENANDOAH VALLEY MEDICAL SYSTEM INCORPORATED. The current approval amount for this business was different than its initial approval amount, but both were the highest of any company. The current approval amount was $3196645.00. The loan was approved April 8, 2020 and retained 289 jobs. 
+
+The name of the company is different than the PPP Loan. The name of the company is apparently Shenandoah Community Health. There are apparently nine locations of this company according to https://www.shencommhealth.com/locations, and some locations have different offices (for example: an x-ray office is in Martinsburg ). I unfortunatly could not find anything on closures. 
+```{r}
+Martinsburg %>%
+  group_by(name,jobs_retained, date_approved,initial_approval_amount, current_approval_amount) %>%
+  summarize(
+    loan_amount=current_approval_amount
+  ) %>%
+arrange(desc(loan_amount))
+```
