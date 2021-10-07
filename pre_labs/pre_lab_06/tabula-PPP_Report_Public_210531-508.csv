@@ -1,0 +1,159 @@
+Loans Approved,Total Net Dollars,Total Lender Count,,
+"11,823,594","$799,832,866,520 ","5,467",,
+Loans Approved,Net Dollars,Lender Count,,
+"6,681,929","$277,700,108,079 ","5,242",,
+First Draw Loans,Loans Approved,Net Dollars,Average Loan Size,Lender Count
+Total First Draw Loans,"3,768,309","$68,915,276,574 ","$18,288 ","5,168"
+First Draw Loans with 10 or fewer employees,"3,724,470","$56,216,754,824 ","$15,094 ","5,156"
+Second Draw Loans,Loans Approved,Net Dollars,Average Loan Size,Lender Count
+Total Second Draw Loans,"2,913,620","$208,784,831,505 ","$71,658 ","5,216"
+Second Draw Loans with 10 or fewer employees,"2,395,644","$63,660,158,141 ","$26,573 ","5,199"
+First & Second Draw Loans,Loans Approved,Net Dollars,Average Loan Size,Lender Count
+Total First & Second Draw Loans,"6,681,929","$277,700,108,079 ","$41,560 ","5,242"
+PPP Loans by Community Financial Institutions,"1,604,140","$34,095,035,498 ","$21,254 ",501
+"PPP Loans by Insured Depository Institutions<$10B in Assets","1,812,102","$101,504,685,266 ","$56,015 ","4,105"
+PPP Loans by Credit Unions <$10B in Assets,"152,366","$5,160,428,953 ","$33,869 ",851
+"PPP Loans by Farm Credit System Institutions<$10B in Assets","19,581","$406,682,354 ","$20,769 ",41
+Lender Type,Lender Count,Loans Approved,Net Dollars,
+Banks and S&Ls($10B or more),112,"1,807,532","$118,331,350,203 ",
+Banks and S&Ls(less than $10B),"4,105","1,812,102","$101,504,685,266 ",
+Fintechs (and other State Regulated),41,"1,210,098","$21,918,632,833 ",
+Small Business Lending Companies,13,"823,576","$15,463,750,507 ",
+Microlenders,34,"532,480","$8,540,740,467 ",
+Credit Unions (less than $10B),851,"152,366","$5,160,428,953 ",
+Non Bank CDFI Funds,9,"276,271","$5,047,040,642 ",
+Farm Credit Lenders,47,"35,923","$870,150,045 ",
+Credit Unions ($10B or more),8,"14,903","$438,573,935 ",
+Certified Development Companies,19,"16,409","$419,677,207 ",
+To Be Confirmed,2,250,"$4,779,785 ",
+BIDCOs,1,19,"$298,236 ",
+State,Loan Count,Net Dollars,,
+AK,"11,911","$746,342,883 ",,
+AL,"107,193","$3,337,720,387 ",,
+AR,"61,701","$1,745,660,603 ",,
+AS,37,"$1,187,913 ",,
+AZ,"89,715","$3,871,793,005 ",,
+CA,"692,692","$35,907,059,637 ",,
+CO,"87,088","$4,737,513,800 ",,
+CT,"55,612","$3,240,741,724 ",,
+DC,"17,351","$1,185,815,859 ",,
+DE,"15,742","$756,466,258 ",,
+FL,"598,506","$19,036,179,898 ",,
+GA,"416,058","$11,056,741,932 ",,
+GU,"1,445","$106,584,393 ",,
+HI,"20,002","$1,362,722,476 ",,
+IA,"111,964","$2,973,773,610 ",,
+ID,"21,961","$923,819,720 ",,
+IL,"435,736","$15,328,824,895 ",,
+IN,"110,397","$4,440,953,031 ",,
+KS,"74,634","$2,384,522,529 ",,
+,,,,
+,KY,"80,225","$2,563,145,675 ",
+State,Loan Count,Net Dollars,,
+OR,"51,276","$3,050,876,119 ",,
+PA,"179,088","$9,958,345,781 ",,
+PR,"30,740","$949,028,507 ",,
+RI,"17,282","$1,000,161,994 ",,
+SC,"90,624","$3,058,629,335 ",,
+SD,"40,837","$1,047,427,807 ",,
+TN,"138,929","$4,552,364,106 ",,
+TX,"559,159","$22,263,165,930 ",,
+UT,"32,814","$1,840,771,407 ",,
+VA,"113,491","$5,571,715,395 ",,
+VI,"1,373","$76,067,379 ",,
+VT,"9,541","$564,206,007 ",,
+WA,"91,086","$5,887,464,009 ",,
+WI,"102,837","$4,391,796,235 ",,
+WV,"15,831","$810,639,493 ",,
+WY,"12,316","$602,941,034 ",,
+To be confirmed,4,"$57,419 ",,
+State,Loan Count,Net Dollars,,
+LA,"150,147","$4,954,034,653 ",,
+MA,"103,507","$6,896,694,622 ",,
+MD,"111,317","$5,105,480,074 ",,
+ME,"19,471","$994,866,271 ",,
+MI,"176,993","$8,418,112,644 ",,
+MN,"126,388","$5,371,253,729 ",,
+MO,"142,243","$4,606,412,713 ",,
+MP,452,"$25,757,685 ",,
+MS,"96,324","$2,340,660,847 ",,
+MT,"23,463","$823,366,188 ",,
+NC,"139,472","$5,613,843,059 ",,
+ND,"31,291","$1,113,121,201 ",,
+NE,"70,810","$1,937,788,407 ",,
+NH,"16,617","$1,156,553,713 ",,
+NJ,"153,261","$8,412,871,701 ",,
+NM,"19,027","$1,136,917,414 ",,
+NV,"79,176","$2,758,914,488 ",,
+NY,"415,741","$22,734,700,124 ",,
+OH,"218,210","$9,038,248,426 ",,
+,,,,
+OK,"90,821","$2,927,281,933 ",,
+Loan Size,Loan Count,Net Dollars,% of Count,% of Amount
+$50K and Under,"5,822,120","$90,807,493,443 ",87.10%,32.70%
+>$50K - $100K,"371,459","$26,487,929,663 ",5.60%,9.50%
+>$100K - $150K,"181,705","$22,584,777,740 ",2.70%,8.10%
+>$150K - $350K,"186,798","$42,273,269,020 ",2.80%,15.20%
+>$350K - $1M,"93,092","$51,987,085,335 ",1.40%,18.70%
+>$1M - $2M,"26,004","$39,535,939,472 ",0.40%,14.20%
+>$2M - $5M,422,"$1,335,740,553 ",0.00%,0.50%
+Rank,Lender Name,Loans Approved,Net Dollars,Average Loan Size
+1,JPMorgan Chase Bank,"158,345","$12,189,061,552 ","$76,978 "
+2,Bank of America,"147,548","$8,934,221,969 ","$60,551 "
+3,"Prestamos CDFI, LLC","494,415","$7,676,108,813 ","$15,526 "
+4,"Capital Plus Financial, LLC","472,036","$7,582,023,560 ","$16,062 "
+5,"Harvest Small Business Finance, LLC","429,098","$7,437,279,355 ","$17,332 "
+6,Cross River Bank,"288,932","$6,583,843,429 ","$22,787 "
+7,Itria Ventures LLC,"178,807","$4,983,368,254 ","$27,870 "
+8,"BSD Capital, LLC dba Lendistry","245,894","$4,729,176,754 ","$19,233 "
+9,Benworth Capital,"334,434","$4,612,404,344 ","$13,792 "
+10,Customers Bank,"221,116","$4,541,659,856 ","$20,540 "
+11,PNC Bank,"45,454","$4,322,632,852 ","$95,099 "
+12,Fountainhead SBF LLC,"286,208","$4,050,986,737 ","$14,154 "
+13,TD Bank,"47,403","$3,709,558,661 ","$78,256 "
+14,Truist Bank,"37,843","$3,657,551,842 ","$96,651 "
+15,Wells Fargo Bank,"87,817","$3,496,896,632 ","$39,820 "
+NAICS Sector Description,Loan Count,Net Dollars,% of Amount,
+Accommodation and Food Services,"462,478","$41,506,221,571 ",15%,
+Construction,"558,180","$33,443,602,502 ",12%,
+Health Care and Social Assistance,"485,698","$28,820,477,425 ",10%,
+"Professional, Scientific, and Technical Services","657,326","$28,559,859,211 ",10%,
+Other Services (except Public Administration),"1,107,768","$27,345,366,128 ",10%,
+Manufacturing,"221,216","$22,148,692,329 ",8%,
+Transportation and Warehousing,"763,810","$15,772,271,550 ",6%,
+Retail Trade,"468,043","$15,263,246,977 ",5%,
+Administrative and Support and Waste Management and Remediation Services,"393,563","$12,955,372,474 ",5%,
+Wholesale Trade,"187,490","$10,379,776,487 ",4%,
+"Agriculture, Forestry, Fishing and Hunting","532,884","$10,022,835,191 ",4%,
+"Arts, Entertainment, and Recreation","223,882","$7,452,355,755 ",3%,
+Real Estate and Rental and Leasing,"262,928","$7,335,291,000 ",3%,
+Educational Services,"101,773","$5,122,704,390 ",2%,
+Information,"75,128","$4,123,673,365 ",1%,
+Finance and Insurance,"127,088","$3,423,154,208 ",1%,
+Mining,"21,676","$2,383,826,599 ",1%,
+Public Administration,"18,359","$784,812,141 ",0%,
+Management of Companies and Enterprises,"6,812","$464,310,239 ",0%,
+,Gender,Loans Approved,Net Dollars,
+Female,,"1,158,031","$33,351,949,494 ",
+Male,,"1,781,672","$90,700,213,878 ",
+Unknown/NotStated,,"3,742,226","$153,647,944,708 ",
+,Veteran,Loans Approved,Net Dollars,
+Non-Veteran,,"2,488,683","$99,267,441,277 ",
+Unknown/NotStated,,"4,057,994","$172,058,427,883 ",
+Veteran,,"135,252","$6,374,238,919 ",
+Race,Loans Approved,Net Dollars,,
+American Indian or Alaska Native,"55,378","$2,473,827,119 ",,
+Asian,"162,151","$7,774,961,578 ",,
+Black or African American,"825,959","$16,115,604,264 ",,
+Eskimo & Aleut,14,"$375,666 ",,
+Multi Group,22,"$571,645 ",,
+Native Hawaiian or Other Pacific,,,,
+,"7,886","$253,155,627 ",,
+Islander,,,,
+Puerto Rican,320,"$11,331,553 ",,
+Unanswered,"4,712,859","$207,532,206,289 ",,
+White,"917,340","$43,538,074,339 ",,
+Ethnicity,Loans Approved,Net Dollars,,
+Hispanic or Latino,"252,517","$9,013,651,378 ",,
+Not Hispanic or Latino,"1,955,130","$83,675,290,951 ",,
+Unknown/NotStated,"4,474,282","$185,011,165,750 ",,
