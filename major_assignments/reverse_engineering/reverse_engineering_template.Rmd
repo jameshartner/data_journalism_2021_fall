@@ -1,6 +1,6 @@
 ---
 title: "Reverse Engineering Project"
-author: "Student names here"
+author: "James Hartner, Daniel Lawall, Daniel Philipose"
 date: "Date here"
 output:
   html_document:
@@ -25,7 +25,9 @@ In this notebook, we are reverse engineering the story, [STORY NAME](STORY URL)
 Loading required libraries for this analysis.
 
 ```{r echo=FALSE, message=FALSE}
-
+options(scipen=999)
+library(tidyverse)
+library(janitor)
 ```
 
 ## Load and Cleaning Data
@@ -36,7 +38,7 @@ In this section, describe the source of the data, write a basic data dictionary 
 # Load required data
 
 # Path to data should be loaded from folder "data" i.e. read_csv("data/name_of_data.csv")
-
+Washington_Post_data <- read_csv("data/update(oct10).csv")
 # Clean required data and prepare for analysis if needed. 
 
 
@@ -48,6 +50,7 @@ In this notebook, we are reverse engineering five sentences from the story.
 ### Sentence 1
 
 * **Sentence text**: [Paste in sentence to engineer here]
+"The starkest difference between women and men is the rate: Women account for about half the population, but 4 percent of the killings. Of those fatally shot every year, about 44 have been women."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
 ```{r}
@@ -60,6 +63,7 @@ In this notebook, we are reverse engineering five sentences from the story.
 ### Sentence 2
 
 * **Sentence text**: [Paste in sentence to engineer here]
+"Since 2015, Black women have accounted for less than 1 percent of the overall fatal shootings in cases where race was known. But within this small subset, Black women, who are 13 percent of the female population, account for 20 percent of the women shot and killed and 28 percent of the unarmed deaths."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
 ```{r}
@@ -72,7 +76,9 @@ In this notebook, we are reverse engineering five sentences from the story.
 ### Sentence 3
 
 * **Sentence text**: [Paste in sentence to engineer here]
+"The average age of women and men killed by police was 37, and about one-third were 25 to 34."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+
 
 ```{r}
 # Put code to reverse engineer sentence here
@@ -84,7 +90,10 @@ In this notebook, we are reverse engineering five sentences from the story.
 ### Sentence 4
 
 * **Sentence text**: [Paste in sentence to engineer here]
+"About 31 percent, or 77, of the 247 women fatally shot by police since 2015 had mental health issues, compared to 22 percent of the 5,362 men killed."
+
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+
 
 ```{r}
 # Put code to reverse engineer sentence here
