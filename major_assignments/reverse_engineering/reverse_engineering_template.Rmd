@@ -18,8 +18,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction 
 
-In this notebook, we are reverse engineering the story, [STORY NAME](STORY URL)
+In this notebook, we are reverse engineering the story, ["Nearly 250 women have been fatally shot by police since 2015"](https://www.washingtonpost.com/graphics/2020/investigations/police-shootings-women/)
 
+This story is from the Washington Post and was written by Marisa Iati, Jennifer Jenkins and Sommer Brugal
 ## Load libraries
 
 Loading required libraries for this analysis.
