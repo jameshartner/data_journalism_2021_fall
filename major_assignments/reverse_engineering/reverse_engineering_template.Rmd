@@ -1,7 +1,7 @@
 ---
 title: "Reverse Engineering Project"
 author: "James Hartner, Daniel Lawall, Daniel Philipose"
-date: "Date here"
+date: "10/5/2021"
 output:
   html_document:
     theme: cerulean
@@ -38,7 +38,8 @@ In this section, describe the source of the data, write a basic data dictionary 
 # Load required data
 
 # Path to data should be loaded from folder "data" i.e. read_csv("data/name_of_data.csv")
-Washington_Post_data <- read_csv("data/update(oct10).csv")
+Washington_Post_data<-read_csv("data/fatal-police-shootings-data.csv")
+Washington_Post_data_update_oct_10 <- read_csv("data/update(oct10).csv")
 # Clean required data and prepare for analysis if needed. 
 
 
@@ -50,15 +51,66 @@ In this notebook, we are reverse engineering five sentences from the story.
 ### Sentence 1
 
 * **Sentence text**: [Paste in sentence to engineer here]
-"The starkest difference between women and men is the rate: Women account for about half the population, but 4 percent of the killings. Of those fatally shot every year, about 44 have been women."
+"About 31 percent, or 77, of the 247 women fatally shot by police since 2015 had mental health issues, compared to 22 percent of the 5,362 men killed."
+
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
+Our findings were a little different because the story was posted over a year ago (Sept. 4, 2020) and the Washington Post have keep updating the data. In the data, which was taken Sept. 28, 2020, we found that since 2015, the percentage of women fatally shot by police who had mental health issues was higher at roughly 32 percent (95 of the 293 women). Men who had mental health issues was around 22 percent still ( 1398 of the 6303 men killed).
+
+
 
 ```{r}
 # Put code to reverse engineer sentence here
+#Data from Sept.28
+women_fatally_shot<- Washington_Post_data %>%
+filter(gender=="F")
+women_fatally_shot %>%
+group_by(signs_of_mental_illness) %>%
+summarize(
+total=n(),
+percentage=total/293
+) %>%
+arrange(desc(total))
 
+#Men percentage
+men_fatally_shot<-Washington_Post_data %>%
+filter(gender=="M")
+men_fatally_shot %>%
+group_by(signs_of_mental_illness) %>%
+summarize(
+  count=n(),
+  percentage=count/6298
+) %>%
+arrange(desc(count))
 # Display results of code below this codeblock
 
 ```
+
+Updated data OCT.10 found relatively similar numbers. However, in less than a two week span, there were five men and one woman who were fatally shot that was added to this data.
+```{r}
+#UPDATED DOCUMENTS OCT. 10
+women_fatally_shot_update_oct_10<- Washington_Post_data_update_oct_10 %>%
+filter(gender=="F")
+women_fatally_shot_update_oct_10 %>%
+group_by(signs_of_mental_illness) %>%
+summarize(
+total=n(),
+percentage=(total/294)*100
+) %>%
+arrange(desc(total))
+
+#Men percentage
+men_fatally_shot_update_oct_10<-Washington_Post_data_update_oct_10 %>%
+filter(gender=="M")
+men_fatally_shot_update_oct_10 %>%
+group_by(signs_of_mental_illness) %>%
+summarize(
+  count=n(),
+  percentage=(count/6303)*100
+) %>%
+arrange(desc(count))
+```
+
+# Display results of code below this codeblock
 
 ### Sentence 2
 
@@ -81,26 +133,22 @@ In this notebook, we are reverse engineering five sentences from the story.
 
 
 ```{r}
-# Put code to reverse engineer sentence here
+# Put code to reverse engineer sentence here 
 
 # Display results of code below this codeblock
 
 ```
 
 ### Sentence 4
-
 * **Sentence text**: [Paste in sentence to engineer here]
-"About 31 percent, or 77, of the 247 women fatally shot by police since 2015 had mental health issues, compared to 22 percent of the 5,362 men killed."
-
+"The starkest difference between women and men is the rate: Women account for about half the population, but 4 percent of the killings. Of those fatally shot every year, about 44 have been women."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
-
 
 ```{r}
 # Put code to reverse engineer sentence here
 
-# Display results of code below this codeblock
-
 ```
+
 
 ### Sentence 5
 
