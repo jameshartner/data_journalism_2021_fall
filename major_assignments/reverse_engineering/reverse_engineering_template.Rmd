@@ -62,6 +62,7 @@ Our findings were a little different because the story was posted over a year ag
 
 
 ```{r}
+
 # Put code to reverse engineer sentence here
 #Data from Sept.28
 women_fatally_shot<- Washington_Post_data %>%
@@ -74,17 +75,27 @@ percentage=total/293
 ) %>%
 arrange(desc(total))
 
+
 #Men percentage
 men_fatally_shot<-Washington_Post_data %>%
 filter(gender=="M")
 men_fatally_shot %>%
 group_by(signs_of_mental_illness) %>%
 summarize(
-  count=n(),
-  percentage=count/6298
+ count=n(),
+ percentage=count/6298
 ) %>%
 arrange(desc(count))
-# Display results of code below this codeblock
+
+# What Prof. Mussenden did 
+Mental_illness <- Washington_Post_data %>%
+group_by(gender, signs_of_mental_illness) %>%
+summarise(
+   total=n()
+) %>%
+mutate(percentage=total/sum(total)) %>%
+arrange(desc(total))
+
 
 ```
 
@@ -121,10 +132,37 @@ arrange(desc(count))
 "Since 2015, Black women have accounted for less than 1 percent of the overall fatal shootings in cases where race was known. But within this small subset, Black women, who are 13 percent of the female population, account for 20 percent of the women shot and killed and 28 percent of the unarmed deaths."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
+We broke this statement into three parts in order to determine each of the listed  facts. The process was similar across all three parts, in which we either filtered or grouped by race and gender. In each part, we also used "mutate" to create a new column to determien the percentages. We were able to confirm all three of the facts in this statement: Black women account for less than 1% of fatal shootings where race is know, 20% of the women shot and 28% of the total number of unarmed deaths.
+
 ```{r}
 # Put code to reverse engineer sentence here
 
 # Display results of code below this codeblock
+overall_black_women <- Washington_Post_data %>%
+  group_by(race, gender) %>%
+   summarise(
+    count=n()
+  ) %>%
+  mutate(pct=(count/5841)*100)
+  
+
+Black_women <- Washington_Post_data %>%
+  filter(gender == "F") %>%
+  group_by(race) %>%
+  summarise(
+    count=n()
+  ) %>%
+  mutate(pct_by_race=count/sum(count))
+
+Unarmed_black_women <- Washington_Post_data %>%
+  filter(gender == "F") %>%
+  filter(armed == "unarmed") %>%
+  group_by(race) %>%
+  summarise(
+    count=n()
+  ) %>%
+  mutate(pct_by_race=count/28)
+
 
 ```
 
@@ -146,10 +184,26 @@ arrange(desc(count))
 * **Sentence text**: [Paste in sentence to engineer here]
 "The starkest difference between women and men is the rate: Women account for about half the population, but 4 percent of the killings. Of those fatally shot every year, about 44 have been women."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
-
+This roughly followed the same findings as Washington Post. We found that it was roughly 4% of the population killed were women. 
 ```{r}
-# Put code to reverse engineer sentence here
 
+#Ask Sean on if we should filter every year then take the average of the women dead or not for the 44 women every year
+# Put code to reverse engineer sentence here
+Question_3 <-Washington_Post_data %>%
+filter(gender=="F")
+
+women_fatally_shot %>%
+  filter(gender=="F") %>%
+  summarise(
+   count = n()
+  ) %>%
+mutate(pct=(count/5))
+
+women_fatally_shot %>%
+  summarise(
+   count = n()
+  ) %>%
+  mutate(pct=(count/6594))
 ```
 
 
