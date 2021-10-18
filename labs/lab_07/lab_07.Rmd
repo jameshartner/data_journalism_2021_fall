@@ -108,12 +108,12 @@ ppp_info %>%
 arrange(desc(per100k))
 
 #I believe it is Georgia.
-  
+#Just some thoughts
 #question7<- tibble()  
 #for(state_page_link in 1:nrow(Approved_ppp_loan[[1]])) {
 #  each_row_df <- Approved_ppp_loan %>%
 #  the_url<- each_row_df$url 
-#    xpath_employment_table <- paste0('//*[@id="',each_row_df$url_x_path,'"]')
+#   
 #}
 
 #https://smussenden.github.io/coursefiles/ppp_scraping_example/states/alabama.html
