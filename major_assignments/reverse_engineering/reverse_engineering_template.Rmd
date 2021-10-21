@@ -161,7 +161,8 @@ Unarmed_black_women <- Washington_Post_data %>%
   summarise(
     count=n()
   ) %>%
-  mutate(pct_by_race=count/28)
+  mutate(total_unarmed = sum(count)) %>%
+  mutate(pct_by_race=count/total_unarmed)
 
 
 ```
@@ -175,7 +176,10 @@ Unarmed_black_women <- Washington_Post_data %>%
 
 ```{r}
 # Put code to reverse engineer sentence here 
-
+Washington_Post_data %>%
+  summarize(
+    sum=sum(age)
+  ) 
 # Display results of code below this codeblock
 
 ```
