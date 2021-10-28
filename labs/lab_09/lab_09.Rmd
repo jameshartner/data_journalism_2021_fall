@@ -1,6 +1,6 @@
 ---
 title: "lab_09"
-author: "sean mussenden"
+author: "James Hartner"
 date: "8/26/2021"
 output: html_document
 ---
@@ -16,6 +16,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Load libraries and establish settings
 
 **Task** Create a codeblock and load appropriate packages and settings for this lab.
+```{r}
+options(scipen=999)
+library(tidycensus)
+library('tidyverse')
+census_api_key("9f3430d359e022a7620289f71ec793ba915a884f")
+```
 
 ## Questions
 
@@ -33,6 +39,32 @@ Basically, your chart should look like this image, which will appear when you ru
 
 ```{r}
 knitr::include_graphics(rep("images/chart_1.png"))
+wv_ppp_loan <- read_rds("data/lab_09.rds")
+```
+```{r}
+wv_graph <- wv_ppp_loan %>%
+    filter(date_approved >="2020-04-01" & date_approved <="2020-04-30") %>%
+    group_by(date_approved) %>%
+  summarise(
+    total_loans= n()
+  ) %>%
+  arrange(desc(total_loans)) 
+wv_graph %>%  
+  ggplot() +
+  geom_line(aes(x=date_approved, y=total_loans)) +
+   scale_x_date(date_breaks = "1 day", date_labels = "%m-%d-%y") +
+   theme(
+    axis.text.x = element_text(angle = 45,  hjust=1)
+  ) +
+   labs(
+    title="West Virginia Total Approved Loans in April 2020",
+    x = "Date",
+    y = "Total Loans",
+    caption = "source: SBA PPP loan database"
+  ) +
+  geom_point(aes(x=date_approved, y=total_loans)) +
+  geom_text(aes(x=date_approved, y=total_loans, label=total_loans), nudge_x=-1, nudge_y=-1, check_overlap=T)
+
 ```
 **A1.** 
 
@@ -45,7 +77,38 @@ knitr::include_graphics(rep("images/chart_1.png"))
 * Make the bars on the chart blue! I didn't show you how to do this in the prelab, so do some web sleuthing to figure it out.  
 
 **A2.** 
+```{r}
+state_data <- read_csv("data/state_ppp_all.csv") %>%
+   mutate(state=case_when(state == "S Dakota" ~ "South Dakota",
+   state=="N Dakota" ~"North Dakota", TRUE~state))
 
+
+
+ACS_MASTER <-load_variables(2019, "acs5", cache = TRUE) 
+ACS_jazz<- get_acs(geography= "State", variables="B01001_001", geometry = FALSE) %>%
+  rename(state=NAME, population=estimate)
+
+Joined_Dataset <- state_data %>% 
+  left_join(ACS_jazz) %>%
+  select(state, total_ppp_loans, population)
+
+Joined_Dataset %>%
+  group_by(state) %>%
+  summarize(
+    total_loans_per_100k= ((total_ppp_loans/population)*100000)
+  ) %>%
+  arrange(desc(total_loans_per_100k)) %>%
+  head(10) %>%
+ggplot() +
+  geom_bar(aes(x=reorder(state,total_loans_per_100k), weight=total_loans_per_100k)) +
+  coord_flip() + 
+  labs(
+    title="States with the Most PPP Loans per 100k",
+    x = "total loans",
+    y = "state",
+    caption = "source: SBA PPP loan database"
+  )
+```
 **Q3.**  A scatterplot is a type of chart that helps us see relationships between two variables. One variable goes on the x axis, the other on the y axis.  For each row/observation in our data, a scatterplot puts a circle (or a "point") where the two variables intersect on a grid. 
 
 Statisticians use scatterplots to show graphically whether one variable is correlated -- related, in a statistical sense -- with another variable.  A classic example is the [relationship between ice cream sales and temperature](https://www.mathsisfun.com/data/scatter-xy-plots.html).  The scatterplot below (press play to load the image) shows that relationship, that an increase in temperature is associated with an increase in ice cream sales. When it's 12C, sales are 200 dollars, and when it's hotter, 25C, sales are 600 dollars.
