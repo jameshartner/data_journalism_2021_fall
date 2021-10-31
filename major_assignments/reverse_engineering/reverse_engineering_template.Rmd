@@ -14,13 +14,50 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-install.packages('lubridate')
+
 ```
 
 ## Introduction 
 
 In this notebook, we are reverse engineering the story, ["Nearly 250 women have been fatally shot by police since 2015"](https://www.washingtonpost.com/graphics/2020/investigations/police-shootings-women/)
 
+## Definitions
+"Washington_Post_data.csv" is the data that we took from the github linked in the story. We decided to keep a consistent data set to look into (even though The Washington Post constantly updates this data), so our data was taken from Sept. 28. 
+
+"WaPo_Data" is just "Washington_Post_data." Since we had multiple people working on this analysis, our data set is labled differently, but is the exact same data. 
+
+'lubricate' is a package that we downloaded to help in question three. This helps modifies dates in our data to better analysis it. 
+
+"drop_na()" is a function of R that drops the "NA" variables. For example, some of the victims had no registered race, so in order to clean the data, we had to drop those datapoints. The Washington Post did the same according to their sentence (sentence three). The sentence states, "of known races."
+
+filter()- We'll use this if we want to see just one or more particular things from the data.
+
+filter("" != "")- this takes everything else other than the piece we labeled. For example, say filter(race != "NA"), this takes out "NA" and keeps the rest of the races.
+
+group_by - To group the variables we want.
+
+summarize- This summarizes the data we pull.
+
+n()- This counts how many datapoints are alike. For example, say we want to see how many Women were shot,we'll do group_by(gender) %>% summarize ( count=n()) to find how many women were fatally shot. 
+
+mutate()- This adjusts the data set. 
+
+mean()- This function takes the average of a piece of the data set. 
+
+sum() takes the total amount of a piece of the data set. 
+
+nrow() takes how many rows from the data set without needing to count. This is useful when we want to take the percentage of some piece of the data. 
+
+
+
+
+
+## Packages
+```{r}
+install.packages('tidyverse')
+install.packages('janitor')
+install.packages('lubridate')
+```
 This story is from the Washington Post and was written by Marisa Iati, Jennifer Jenkins and Sommer Brugal
 ## Load libraries
 
@@ -42,9 +79,8 @@ In this section, describe the source of the data, write a basic data dictionary 
 
 # Path to data should be loaded from folder "data" i.e. read_csv("data/name_of_data.csv")
 Washington_Post_data<-read_csv("data/fatal-police-shootings-data.csv")
-Washington_Post_data_update_oct_10 <- read_csv("data/update(oct10).csv")
 # Clean required data and prepare for analysis if needed. 
-
+# The data was pretty cleaned. If it needed some additional cleaning, we put it in each respected question. 
 
 ```
 
@@ -73,7 +109,7 @@ women_fatally_shot %>%
 group_by(signs_of_mental_illness) %>%
 summarize(
 total=n(),
-percentage=total/293
+percentage=total/293 #This took the percentage of victims who were women and had signs of mental illness
 ) %>%
 arrange(desc(total))
 
@@ -87,7 +123,7 @@ summarize(
  count=n(),
  percentage=count/6298
 ) %>%
-arrange(desc(count))
+arrange(desc(count)) #same thing as the last set of code, except we wanted to see the percentage of men who had signs of mental illness and were killed. 
 
 # What Prof. Mussenden did 
 Mental_illness <- Washington_Post_data %>%
@@ -96,12 +132,11 @@ summarise(
    total=n()
 ) %>%
 mutate(percentage=total/sum(total)) %>%
-arrange(desc(total))
+arrange(desc(total)) #This is an easier way to breakdown the dataset in terms of  percentage of people killed who had signs of mental illness. 
 
 
 ```
 
-Updated data OCT.10 found relatively similar numbers. However, in less than a two week span, there were five men and one woman who were fatally shot by Police, according to the additional data points added.
 
 
 # Display results of code below this codeblock
@@ -112,37 +147,37 @@ Updated data OCT.10 found relatively similar numbers. However, in less than a tw
 "Since 2015, Black women have accounted for less than 1 percent of the overall fatal shootings in cases where race was known. But within this small subset, Black women, who are 13 percent of the female population, account for 20 percent of the women shot and killed and 28 percent of the unarmed deaths."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
-We broke this statement into three parts in order to determine each of the listed  facts. The process was similar across all three parts, in which we either filtered or grouped by race and gender. In each part, we also used "mutate" to create a new column to determien the percentages. We were able to confirm all three of the facts in this statement: Black women account for less than 1% of fatal shootings where race is know, 20% of the women shot and 28% of the total number of unarmed deaths.
+We broke this statement into three parts in order to determine each of the listed  facts. The process was similar across all three parts, in which we either filtered or grouped by race and gender. In each part, we also used "mutate" to create a new column to determine the percentages. We were able to confirm all three of the facts in this statement: Black women account for less than 1% of fatal shootings where race is know, 20% of the women shot and 28% of the total number of unarmed deaths.
 
 ```{r}
-# Put code to reverse engineer sentence here
-
-# Display results of code below this codeblock
 overall_black_women <- Washington_Post_data %>%
+  filter(race!="NA")
   group_by(race, gender) %>%
    summarise(
-    count=n()
+    count=n() #This is counting the genders that were registered from the victims. 
   ) %>%
-  mutate(pct=(count/5841)*100)
+  mutate(pct=(count/(nrow(Washington_Post_data)*100)))#This is taking the percentage of killings for each known race.
   
 
 Black_women <- Washington_Post_data %>%
   filter(gender == "F") %>%
+  filter(race != "NA" ) %>%
   group_by(race) %>%
   summarise(
     count=n()
   ) %>%
-  mutate(pct_by_race=count/sum(count))
+  mutate(pct_by_race=count/sum(count)) #Npw we are filtering the known races by gender to find how many Black women were fatally shot.
 
 Unarmed_black_women <- Washington_Post_data %>%
   filter(gender == "F") %>%
   filter(armed == "unarmed") %>%
+  filter(race != "NA")
   group_by(race) %>%
   summarise(
     count=n()
   ) %>%
   mutate(total_unarmed = sum(count)) %>%
-  mutate(pct_by_race=count/total_unarmed)
+  mutate(pct_by_race=count/total_unarmed) #Same thing as the previous code, except we're curious the percentage of black women that were unarmed.
 
 
 ```
@@ -153,29 +188,28 @@ Unarmed_black_women <- Washington_Post_data %>%
 "The average age of women and men killed by police was 37, and about one-third were 25 to 34."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
+With this, we were able to find relatively the same results. For men, the  average age was 36.59 and for female, the average age was 37.87. However, if we are taking both men and women fatally shot combined, the average was roughly 36.66, which if we round that age to the nearest whole number, we'll get 37.
+
+For the about "one-third" part of the sentence, our results show that roughly 31.35 percent of shooting victims are between the ages of 25 and 34, which is about one-third, or 33%. We believe that since the data is newer compared to the story, the percentage went down, and more data points of victims younger than 25 or older than 34 were added to the data set. 
 
 ```{r}
 #Average for women
 WaPo_data<- Washington_Post_data
-women_fatally_shot <- WaPo_data %>%
-  filter(gender=="F")
 
-age_women_fatally_shot <- women_fatally_shot %>%
+age_fatally_shot <- WaPo_data %>%
   drop_na() %>%
+  group_by(gender)%>%
   summarise(
     mean_age = mean(age)
-  )
-
-# Average for men
-men_fatally_shot <- WaPo_data %>%
-  filter(gender=="M")
-
-age_men_fatally_shot <- men_fatally_shot %>%
-   drop_na() %>%
-  summarise(
-    mean_age = mean(age)
-  )
-
+  ) %>%
+  print(age_fatally_shot)
+Average_age <- WaPo_data %>%
+  drop_na() %>%
+  summarize(
+    mean_age=mean(age)
+  ) %>%
+  print(Average_age)
+ 
 
 #one-third 25 to 34
 WaPo_data %>%
@@ -183,17 +217,7 @@ WaPo_data %>%
   summarise(
     spec_count = n()
   ) %>%
-mutate(pct=(spec_count/6594)*100)
-
-WaPo_data %>%
-  summarise(
-    total_count = n()
-  ) 
-
-  
-# Display results of code below this codeblock
-glimpse(age_men_fatally_shot)
-glimpse(age_women_fatally_shot)
+mutate(pct=(spec_count/nrow(Washington_Post_data))*100)
 
 
 # Display results of code below this codeblock
@@ -251,6 +275,7 @@ years<-Washington_Post_data %>%
 * **Sentence text**: [Paste in sentence to engineer here]
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
 
+NOTE-We only had four sentences since one sentence was broken into two parts, but we kept it all in sentence 2 (see your comments from the first project_milestone)
 ```{r}
 # Put code to reverse engineer sentence here
 #We only had four sentences, since sentence 2 had two of the main points combined.
