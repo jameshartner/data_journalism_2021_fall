@@ -48,6 +48,8 @@ sum() takes the total amount of a piece of the data set.
 
 nrow() takes how many rows from the data set without needing to count. This is useful when we want to take the percentage of some piece of the data. 
 
+as.POSIXct - This cleaned the data sets dates. This was founded in chapter eight of the textbook. 
+
 
 
 
