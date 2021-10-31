@@ -14,6 +14,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+install.packages('lubridate')
 ```
 
 ## Introduction 
@@ -29,6 +30,7 @@ Loading required libraries for this analysis.
 options(scipen=999)
 library(tidyverse)
 library(janitor)
+library(lubridate)
 ```
 
 ## Load and Cleaning Data
@@ -100,29 +102,7 @@ arrange(desc(total))
 ```
 
 Updated data OCT.10 found relatively similar numbers. However, in less than a two week span, there were five men and one woman who were fatally shot by Police, according to the additional data points added.
-```{r}
-#UPDATED DOCUMENTS OCT. 10
-women_fatally_shot_update_oct_10<- Washington_Post_data_update_oct_10 %>%
-filter(gender=="F")
-women_fatally_shot_update_oct_10 %>%
-group_by(signs_of_mental_illness) %>%
-summarize(
-total=n(),
-percentage=(total/294)*100
-) %>%
-arrange(desc(total))
 
-#Men percentage
-men_fatally_shot_update_oct_10<-Washington_Post_data_update_oct_10 %>%
-filter(gender=="M")
-men_fatally_shot_update_oct_10 %>%
-group_by(signs_of_mental_illness) %>%
-summarize(
-  count=n(),
-  percentage=(count/6303)*100
-) %>%
-arrange(desc(count))
-```
 
 # Display results of code below this codeblock
 
@@ -175,11 +155,47 @@ Unarmed_black_women <- Washington_Post_data %>%
 
 
 ```{r}
-# Put code to reverse engineer sentence here 
-Washington_Post_data %>%
-  summarize(
-    sum=sum(age)
+#Average for women
+WaPo_data<- Washington_Post_data
+women_fatally_shot <- WaPo_data %>%
+  filter(gender=="F")
+
+age_women_fatally_shot <- women_fatally_shot %>%
+  drop_na() %>%
+  summarise(
+    mean_age = mean(age)
+  )
+
+# Average for men
+men_fatally_shot <- WaPo_data %>%
+  filter(gender=="M")
+
+age_men_fatally_shot <- men_fatally_shot %>%
+   drop_na() %>%
+  summarise(
+    mean_age = mean(age)
+  )
+
+
+#one-third 25 to 34
+WaPo_data %>%
+  filter(age >= "25" & age <= "34") %>%
+  summarise(
+    spec_count = n()
+  ) %>%
+mutate(pct=(spec_count/6594)*100)
+
+WaPo_data %>%
+  summarise(
+    total_count = n()
   ) 
+
+  
+# Display results of code below this codeblock
+glimpse(age_men_fatally_shot)
+glimpse(age_women_fatally_shot)
+
+
 # Display results of code below this codeblock
 
 ```
@@ -188,7 +204,7 @@ Washington_Post_data %>%
 * **Sentence text**: [Paste in sentence to engineer here]
 "The starkest difference between women and men is the rate: Women account for about half the population, but 4 percent of the killings. Of those fatally shot every year, about 44 have been women."
 * **Analysis summary**: [Write up two to three sentences describing the results of your analysis.  Were you able to confirm the finding? If not, why not?]
-This roughly followed the same findings as Washington Post. We found that it was roughly 4% of the population killed were women. 
+This roughly followed the same findings as Washington Post. We found that it was roughly 4% of the population killed were women from the police shootings. We also saw that if you take the average amount of women shot per year starting from 1-1-2015 (the first year the data started) to the last data point  (9/25/2021), it roughly equates to 44 women shot per year. If we took the average from the start of the first data date taken (1-2-2015) to the last, we would still see basically the same results. 
 ```{r}
 
 #Ask Sean on if we should filter every year then take the average of the women dead or not for the 44 women every year
@@ -196,18 +212,37 @@ This roughly followed the same findings as Washington Post. We found that it was
 Question_3 <-Washington_Post_data %>%
 filter(gender=="F")
 
+#women_fatally_shot %>%
+ # filter(gender=="F") %>%
+  #summarise(
+   #count = n()
+  #) %>%
+#mutate(pct=(count/5))
+#Percentage of killings for women compared to men
 women_fatally_shot %>%
+  summarise(
+   women_shot = n() #Here, we are counting how many women have been fatally shot by police. 
+  ) %>%
+  mutate(pct=(women_shot/nrow(Washington_Post_data))) #Here, we're are calculating the percentage of women shot from the whole data. 
+
+years<-Washington_Post_data %>%
+  mutate(
+    CleanDate = as.POSIXct(date, format="%Y-%m-%d %H:%M:%S")
+) #This converts the dates into a manageable format (founded in the class textbook). This will allow us to group the years and summarize the killings from each year as shown in the code below. 
+  years %>%
+  mutate(date = floor_date(date, "year")) %>% # We are creating a variable that groups the dates from their respective years, so, for example, everything from 2015 we'll all be summarized together. 
+  filter(gender=="F") %>% #For this question, we want to see how many women were killed by police each year then take the average to see if it matches with what the Washington Post stated. 
+  group_by(date) %>%
+  summarise(
+    total = n())%>%
+  arrange(desc(total))
+  years %>% #This will take the average 
   filter(gender=="F") %>%
   summarise(
-   count = n()
-  ) %>%
-mutate(pct=(count/5))
-
-women_fatally_shot %>%
-  summarise(
-   count = n()
-  ) %>%
-  mutate(pct=(count/6594))
+    count=n(),
+    average=count/7,#2015-2021 is considered seven years, since we are going from 01-01-2015 to 12-31-2021. 
+   average_from_last_data_point =count/6.7315 #Note-2021 is not over, so technically, we should be dividing by the last datapoint registered as 9/25/2021/ so 6 years and 267 days which would be 6.7315 years. 
+  )
 ```
 
 
@@ -218,7 +253,7 @@ women_fatally_shot %>%
 
 ```{r}
 # Put code to reverse engineer sentence here
-
+#We only had four sentences, since sentence 2 had two of the main points combined.
 # Display results of code below this codeblock
 
 ```
