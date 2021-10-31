@@ -1,4 +1,5 @@
 # Major assignments
+This folder is for major assignment materials
 # Memo for the reverse engineering project
 Our data analysis project reverse engineers five major data findings from a Washington Post article titled “Nearly 250 women have been fatally shot by police since 2015,” which was published a few months after Breonna Taylor was shot and killed by police. The story is part of a bigger, ongoing project of the Washington Post; they have been collecting data on every deadly police shooting in the United States since January 2015. This database is still updated regularly, which explains why the findings of each of our “reverse engineering tasks” yielded results that don’t exactly equal the findings in the article (the article was published in September 2020, while the data we used is from the database last updated on September 28, 2021). 
 
@@ -12,4 +13,4 @@ The reporters used three graphs/data visualizations total in the story, and each
 
 The linked “Fatal Force” page also includes a link to the Washington Post GitHub, where the database is available for download. The database is well-organized and includes important characteristics of each case of a fatal police shooting (name of victim, age, race, gender, etc.). The reporter also does not communicate how the data may be flawed; for example, upon parsing through the data ourselves, there are cases of “N/A” being entered in certain categories for some data entries (examples when race, gender, etc. could not be confirmed). The Post created this database themselves, and it likely required lots of data cleaning and verification before the data was ready to be published. 
 
-This folder is for major assignment materials
+
