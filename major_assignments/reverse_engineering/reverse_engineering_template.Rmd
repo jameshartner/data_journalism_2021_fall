@@ -24,11 +24,11 @@ In this notebook, we are reverse engineering the story, ["Nearly 250 women have 
 ## Definitions
 "Washington_Post_data.csv" is the data that we took from the github linked in the story. We decided to keep a consistent data set to look into (even though The Washington Post constantly updates this data), so our data was taken from Sept. 28. 
 
-"WaPo_Data" is just "Washington_Post_data." Since we had multiple people working on this analysis, our data set is labled differently, but is the exact same data. 
+"WaPo_Data" is just "Washington_Post_data." Since we had multiple people working on this analysis, our data set is labeled differently, but is the exact same data. 
 
 'lubricate' is a package that we downloaded to help in question three. This helps modifies dates in our data to better analysis it. 
 
-"drop_na()" is a function of R that drops the "NA" variables. For example, some of the victims had no registered race, so in order to clean the data, we had to drop those datapoints. The Washington Post did the same according to their sentence (sentence three). The sentence states, "of known races."
+"drop_na()" is a function of R that drops the "NA" variables. For example, some of the victims had no registered race, so in order to clean the data, we had to drop those data points. The Washington Post did the same according to their sentence (sentence three). The sentence states, "of known races."
 
 filter()- We'll use this if we want to see just one or more particular things from the data.
 
