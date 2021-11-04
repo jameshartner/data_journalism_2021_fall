@@ -100,7 +100,7 @@ Joined_Dataset %>%
   arrange(desc(total_loans_per_100k)) %>%
   head(10) %>%
 ggplot() +
-  geom_bar(aes(x=reorder(state,total_loans_per_100k), weight=total_loans_per_100k)) +
+  geom_bar(aes(x=reorder(state,total_loans_per_100k), weight=total_loans_per_100k), fill="blue") +
   coord_flip() + 
   labs(
     title="States with the Most PPP Loans per 100k",
@@ -129,6 +129,10 @@ To answer those questions, make a codeblock and do the following:
 4. Make a scatterplot. I didn't show you how to do this, so look it up! 
 5. In the answer space below, describe what you see and answer the questions posed above.  In a general sense, what do you think this means?  
 
+```{r}
+
+
+```
 **A3.**  
 
 
