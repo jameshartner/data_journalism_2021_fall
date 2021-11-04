@@ -112,7 +112,7 @@ entire_pop %>% select(GEOID, NAME, estimate) %>% rename(population=estimate) -> 
 black_pop <-get_acs(geography= "county", variables="B02001_003", geometry = FALSE) 
 black_pop %>% select(GEOID, NAME, estimate) %>% rename(black_pop=estimate) -> black_pop
 joined_data_question_five <- black_pop %>%left_join(entire_pop) %>%
-  mutate(percentage=(black_pop/population)*100) %>%
+  mutate(percentage=(black_pop/population)*100) 
 join_data_final <- NEW_PPP %>% inner_join(joined_data_question_five, by = c('zip'='GEOID')) %>%
   arrange(desc(count)) 
 print(join_data_final)
