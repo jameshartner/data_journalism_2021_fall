@@ -60,7 +60,8 @@ joined_dataset <- Per_State %>%
   left_join(Per_State_greater_than_o, by=c('state'))
 
 Top_States <- joined_dataset %>%
-  mutate(Percentage=(Undisbursed_amount_greater_than_zero/Undisbursed_loans)*100)
+  mutate(Percentage=(Undisbursed_amount_greater_than_zero/Undisbursed_loans)*100) %>%
+  head(10)
 write_csv(Top_States, "data/top_ten_states_yo.csv")
   
 ```
@@ -75,11 +76,14 @@ write_csv(Top_States, "data/top_ten_states_yo.csv")
 * Put the answer below along with the URL of your chart.
 
 **A1.**
+According to the data set, Illinois was the state with the most undisbursed loans for barbershops. With that, the state had 11080 loans and had 1172 loans with an undisbursed amount greater than 0. 
+https://datawrapper.dwcdn.net/ZxmCo/1/
 
 **Q2.** Using Datawrapper, make a different (ideally better) version of the chart you made above. TO BE CLEAR: this new graphic should show information about states and loans with undisbursed amounts, so don't, for example, focus on a single state. To do this, you MUST go back in R and do any calculations or add additional data to make the chart more effective or answer the above question in a different way. Your chart MUST be different in that it cannot be a bar chart showing the counts of total and undisbursed applications by state. It could be a bar chart showing another calculation or metric, or a scatterplot, or some other form. Follow the same general guidelines as above for the chart's visual elements, and publish it and including the URL below, along with an explanation of how this chart is different from the first one and how you decided what to do.
 
 **A2.**
-
+https://datawrapper.dwcdn.net/eP4H4/1/
+This chart is different because it mainly focuses on the percentage of  undisbursed loans that have an undisbursed amount greater than 0. I calculated the percentage for each state and used a scatterplot to show a clearer picture of the percentages of those loans in the top ten states. I felt that this would have been better than a bar chart since it is mainly focusing on the percentages for this question. Also, the bar chart would have painted a similar picture in the first question.
 **Q3.** The online lender Kabbage, Inc. is featured in the [ProPublica PPP fake farms story](https://www.propublica.org/article/ppp-farms). To show where Kabbage was lending money, make a county-level map that shows the percentage of loans in each county that were Kabbage loans. To do this, make a codeblock and do the following:
 
 1. Load the `kabbage_counties.csv` and `all_counties.csv` files in the data folder.
@@ -92,13 +96,19 @@ write_csv(Top_States, "data/top_ten_states_yo.csv")
 8. In the answer space below, provide the URL for your published map and then describe where Kabbage loans are and are not found. Where are they more common? Look specifically at Florida in the data: are there counties on the map where no data is displayed? Why?
 
 **A3.**  
+https://datawrapper.dwcdn.net/gnD3a/1/
+
+With the map, I saw that a lot of the kabbage loans were not found in many parts of the United States like upper north in the Dakota's. I also found that the larger percentage of kabbage loans were founded in Florida and states surrounding Florida. There are only two counties in Florida where they are not shaded at all. I would assume that the percentage is so low (say there was only one kabbage loan in those counties compared to thousands of loans in that county). However, my best guess is that people who got money from the SBA by kabbage, targeted areas where there was a high population so their loans would go unnoticed in the bigger picture if and when the SBA data would be released to the public. Another reason, since California does not have a lot of these loans according to the data, would be that kabbage was established in Atlanta, according to the Pro Publica article. The states around Georgia have a high percentage of kabbage loans in their respected counties. 
 ```{r}
 kabbage_roll<-  read_csv("data/kabbage_counties.csv")
 all_counties <- read_csv("data/all_counties.csv")
 joined_parttwo <- all_counties %>% inner_join(kabbage_roll, by = c('project_county_name', 'project_state'))%>%
   mutate(percentage=(total.y/total.x)*100) %>%
    rename(total_county_loans = total.x, total_kabbage_loans=total.y) ->   joined_parttwo
+fibs <- read_csv("data/county_fips.csv") %>%
+  rename(project_county_name=match_county, project_state=state) -> fibs
 
-fibs <- read_csv("data/county_fips.csv")
-joined_with_fibs
+joined_with_everything<- joined_parttwo %>% inner_join(fibs, by=c('project_county_name', 'project_state'))
+write_csv(joined_with_everything, "data/fjfjfjsdljfk;ldfdsa.csv")
+
 ```
