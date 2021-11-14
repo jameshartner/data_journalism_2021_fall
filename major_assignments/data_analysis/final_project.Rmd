@@ -15,16 +15,42 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+```{r}
+library('tidyverse')
+library('tidycensus')
+library('janitor')
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+#Data from Sean 
+senate_agreements <- read_rds("data/senate_agreements.rds")
+senate_assets <-read_rds("data/senate_assets.rds")
+senate_earned_income<-read_rds("data/senate_earned_income.rds")
+senate_liabilities <-read_rds("data/senate_liabilities.rds")
+senate_positions<-read_rds("data/senate_positions.rds")
+senate_transactions <- read_rds("data/senate_transactions.rds")
+senators_all<- read_rds("data/senators_all.rds")
+```
+```{r}
+Latest_ppp <- read_csv("data/PPP12.csv")
 ```
 
+```{r}
+cleaned_data<-Latest_ppp %>%
+rename(senator_full_name=BorrowerName) %>%
+drop_na(senator_full_name) %?%
+tolower(senator_full_name)
+
+
+joined_data <- semi_join(cleaned_data,senators_all, by=c("senator_full_name"))
+joined_data_test <- anti_join(cleaned_data,senators_all, by=c("senator_full_name"))
+
+
+
+
+```
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
