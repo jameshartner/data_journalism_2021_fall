@@ -48,6 +48,31 @@ senators_all<- read_rds("data/senators_all.rds")
 #ppp1<-read_csv("data/ppp1.csv")
 ppp12 <- read_csv("data/PPP12.csv")
 ```
+Possible Join Sean's data
+```{r}
+assets_LLC<-senate_assets %>%
+  mutate(asset_type=str_detect(asset_type,"^Business")) %>%
+  filter(asset_type=="TRUE") 
+#Crapo Estate Holdings LLC Company: Crapo Estate Holding
+  
+crapo_senate <- assets_LLC %>%
+  filter(str_detect(asset,"Crapo Estate"))
+
+crapo_ppp <- ppp12 %>%
+  filter(str_detect(BorrowerName,"^CRAPO"))
+
+filtering_join_df <- crapo_senate %>%
+  separate(asset, into=c("asset","junk"), sep=":") %>%
+  #inner_join(crapo_ppp, by=c( "asset" = "BorrowerName"))
+  stringdist_join(crapo_ppp, by=c("asset" = "BorrowerName"),max_dist=20)
+#install.packages('fuzzyjoin')
+#library(fuzzyjoin)
+
+type <- senate_assets %>%
+  group_by(asset_type) %>%
+  count()
+
+```
 Cleaning Data
 ```{r}
 
