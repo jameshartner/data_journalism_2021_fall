@@ -1,6 +1,6 @@
 ---
 title: "lab_12"
-author: "derek willis"
+author: "blank"
 date: "11/16/2021"
 output: html_document
 ---
@@ -77,7 +77,8 @@ sub_new
 Put your sentence in the answer below.
 
 **A1.**
-November 19 decreased by -46.47 percent (vaccines distributed) compared to the day before
+November 19 decreased by -46.47 percent (vaccines distributed) compared to the day before.
+November 19 decreased by -66.95 percent (vaccines distributed) compared to the week before.
 ```{r}
 
 ```
