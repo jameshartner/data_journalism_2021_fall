@@ -105,7 +105,7 @@ We can calculate r with a function from the corrr package called "correlate()". 
 ### Task 5: Correlate data
 **Task** Run the following code. Describe the table output. What do you see?
 **Answer**
-There were three outputs from the datatable. The first output x value was pct_trump which had an NA y value since our y variable is pct_trump. The second value had a .52 percent for its y value and the last one had .22 percent for its y variable.
+There were three outputs from the datatable. The first output x value was pct_trump which had an NA y value since our y variable is pct_trump. The second value had a 52 percent for its y value and the last one had 22 percent for its y variable.
 ```{r}
 reveal_data %>%
   select(-state_name, -vote_2016) %>%
