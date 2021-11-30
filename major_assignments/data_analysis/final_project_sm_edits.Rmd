@@ -1,0 +1,376 @@
+---
+title: "Data_analysis_project"
+author: "James Hartner, Daniel Philipose, Daniel Lawall"
+date: "11/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
+install.packages('stringr')
+
+```
+
+```{r}
+library('tidyverse')
+library('tidycensus')
+library('janitor')
+library('stringr')
+```
+
+```{r}
+
+### SEAN CODE ADDITIONS
+
+#####
+## Load senate ownership data
+#####
+
+# You should examine the following tables, and the following disclosure types only
+# Add code to filter as you read in
+
+## Assets
+
+senate_assets <-read_rds("data/senate_assets.rds")
+
+# STRING DETECT Business Entity
+# STRING DETECT Accounts Receivable
+# Corporate Securities Non-Public Stock
+# Farm
+# Other Securities
+# Real Estate Commercial
+# Real Estate Residential
+
+## Earned Income
+
+senate_earned_income<-read_rds("data/senate_earned_income.rds")
+
+# Board Compensation
+# Member Draw
+# Other(Consulting fees)
+# Other(Religious Service)
+# Other(Salary & Benefits)
+# Partnership Distributions
+# Salary
+# Self-Employment Income
+# Wages
+
+## Agreements
+
+senate_agreements <- read_rds("data/senate_agreements.rds")
+
+# Continuation of payments by former employer
+# Leave of absence
+# Other (Promissory note)
+# Other (Sole Proprietorship, now inactive)
+
+## Positions
+senate_positions<-read_rds("data/senate_positions.rds")
+# All but Trustee or Representative 
+
+#####
+## Combine various filtered senate ownership tables into a single table with only the information you need 
+##### 
+
+# Write code to combine into a single table
+
+#####
+## Remove any objects we no longer need  
+##### 
+
+# Use rm() to remove unneeded senate objects
+# After running rm(), run gc() to remove objects from memory
+# These are big files, so memory management will be important
+rm(senate_assets)
+gc()
+
+#####
+## Define list of sba ppp loan urls
+##### 
+
+# The PPP data is broken up into 13 slices on the SBA site
+# Below is a list of all 13.  
+
+ppp_sba_loan_urls <- c(
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/91337e12-dc20-4f13-bf24-4bdbe830f9e0/download/public_up_to_150k_1_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/3af99a69-abb2-40f8-bcb3-52c6f745ebdf/download/public_up_to_150k_2_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/0c9dc3d0-ff4d-456a-9f3c-2c67bd2cbe1c/download/public_up_to_150k_3_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/66c26263-cef8-4f66-96f3-7afb13460d9c/download/public_up_to_150k_4_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/78aaf3ae-4524-4c65-8482-27e5838891a7/download/public_up_to_150k_5_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/4068a624-0a83-4b98-a60c-fef367c9b7c6/download/public_up_to_150k_6_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/2f7f8f60-38b7-4566-8a61-5cdbf1eaedeb/download/public_up_to_150k_7_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/4f9f0ab6-fd61-409e-96f1-f735949eb356/download/public_up_to_150k_8_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/e7cb1a0b-af34-41f0-9231-dbd87f2952f0/download/public_up_to_150k_9_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/77b6f37c-932f-4384-974b-4c8435d22d5a/download/public_up_to_150k_10_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/8b4306c8-7efd-4ddd-be27-fac97af00cd6/download/public_up_to_150k_11_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/2598c43b-b031-4f35-a740-d4f13085a6f7/download/public_up_to_150k_12_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/cfd2e743-8809-49be-90b6-0e22f453be23/download/public_150k_plus_211121.csv"
+
+)
+
+# Just for testing purposes, keep only the first URL on the list.  
+# Comment this out later when we run the full loop.
+ppp_sba_loan_urls <- ppp_sba_loan_urls %>%
+  head(1)
+
+#####
+## Define column types for PPP data
+##### 
+
+# We're going to define exactly what we want each column to be, so there aren't any errors reading in data 
+
+ppp_cols <- cols(LoanNumber = col_character(),
+  DateApproved = col_character(),
+  SBAOfficeCode = col_character(),
+  ProcessingMethod = col_character(),
+  BorrowerName = col_character(),
+  BorrowerAddress = col_character(),
+  BorrowerCity = col_character(),
+  BorrowerState = col_character(),
+  BorrowerZip = col_character(),
+  LoanStatusDate = col_character(),
+  LoanStatus = col_character(),
+  Term = col_double(),
+  SBAGuarantyPercentage = col_double(),
+  InitialApprovalAmount = col_double(),
+  CurrentApprovalAmount = col_double(),
+  UndisbursedAmount = col_double(),
+  FranchiseName = col_character(),
+  ServicingLenderLocationID = col_character(),
+  ServicingLenderName = col_character(),
+  ServicingLenderAddress = col_character(),
+  ServicingLenderCity = col_character(),
+  ServicingLenderState = col_character(),
+  ServicingLenderZip = col_character(),
+  RuralUrbanIndicator = col_character(),
+  HubzoneIndicator = col_character(),
+  LMIIndicator = col_character(),
+  BusinessAgeDescription = col_character(),
+  ProjectCity = col_character(),
+  ProjectCountyName = col_character(),
+  ProjectState = col_character(),
+  ProjectZip = col_character(),
+  CD = col_character(),
+  JobsReported = col_double(),
+  NAICSCode = col_character(),
+  Race = col_character(),
+  Ethnicity = col_character(),
+  UTILITIES_PROCEED = col_double(),
+  PAYROLL_PROCEED = col_double(),
+  MORTGAGE_INTEREST_PROCEED = col_double(),
+  RENT_PROCEED = col_double(),
+  REFINANCE_EIDL_PROCEED = col_double(),
+  HEALTH_CARE_PROCEED = col_double(),
+  DEBT_INTEREST_PROCEED = col_double(),
+  BusinessType = col_character(),
+  OriginatingLenderLocationID = col_character(),
+  OriginatingLender = col_character(),
+  OriginatingLenderCity = col_character(),
+  OriginatingLenderState = col_character(),
+  Gender = col_character(),
+  Veteran = col_character(),
+  NonProfit = col_character(),
+  ForgivenessAmount = col_double(),
+  ForgivenessDate = col_character()
+)
+
+#####
+## Loop through each URL one by one
+##### 
+
+# For each URL in our list of 13 urls (or only 1, if we're testing) do the following
+
+for (ppp_sba_loan_url in ppp_sba_loan_urls) {
+  
+  #####
+  ## Read in the csv from sba site
+  #####
+  
+  ## The filepath is the loan url from the list above.  
+  ## The column data types (col_types) are set by the ppp_cols object we defined above
+  ## For testing, set n_max to only read in first row.  Remove that when we run for real. 
+  ## 
+  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=100000) 
+  
+  
+  #####
+  ## Do any cleaning to the ppp_loan_slice data biz name column to prepare for fuzzy join
+  #####
+  
+  # Put your fuzzy join code here
+  
+  #####
+  ## Fuzzy join to ppp data
+  #####
+  
+  # Put your fuzzy join code here
+  
+  #####
+  ## Write out the results of this filtering fuzzy join as rds
+  #####
+  
+  # Put your write out to rds here
+  # You'll need to build the filename for each one as part of the loop, so you don't overwrite.
+  
+  #####
+  ## Clean up memory
+  #####
+  
+  # Use rm() to remove the ppp_loan_slice
+  # Use gc() to free up memory
+  
+  #####
+  ## Nice little print statement to tell you're done the first part of the loop
+  #####
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+## NOTES-James:
+
+We need to surf all of these websites (possible scrapping) and identify any businesses owned by the senators and see if there are any people if some took out some loans (HINT: Sean found two (I think that's what he said, either two or three))
+
+Here is some of the data cleaned. I felt that we didn't need many of these columns and this actually made my computer not crap out on me after a bit (this computer is absolute garbage. It's like a junk yard car, gets you from point A to point B. A couple hiccups from here and there but hey, it gets you there)
+
+Also data from Sean. We can join these with the PPP data and go from there. 
+
+```{r}
+#Data from Sean 
+
+#####
+## Load Senate Data 
+#####
+
+## Assets
+# STRING DETECT Business Entity
+# STRING DETECT Accounts Receivable
+# Corporate Securities Non-Public Stock
+# Farm
+# Other Securities
+# Real Estate Commercial
+# Real Estate Residential
+
+## Earned Income
+# Board Compensation
+# Member Draw
+# Other(Consulting fees)
+# Other(Religious Service)
+# Other(Salary & Benefits)
+# Partnership Distributions
+# Salary
+# Self-Employment Income
+# Wages
+
+## Agreements
+# Continuation of payments by former employer
+# Leave of absence
+# Other (Promissory note)
+# Other (Sole Proprietorship, now inactive)
+
+## Positions
+# All but Trustee or Representative 
+
+senate_agreements <- read_rds("data/senate_agreements.rds")
+senate_assets <-read_rds("data/senate_assets.rds")
+senate_earned_income<-read_rds("data/senate_earned_income.rds")
+senate_positions<-read_rds("data/senate_positions.rds")
+senate_transactions <- read_rds("data/senate_transactions.rds")
+
+```
+```{r}
+#ppp1<-read_csv("data/ppp1.csv")
+ppp12 <- read_csv("data/PPP12.csv")
+```
+Possible Join Sean's data
+```{r}
+assets_LLC<-senate_assets %>%
+  mutate(asset_type=str_detect(asset_type,"^Business")) %>%
+  filter(asset_type=="TRUE") 
+#Crapo Estate Holdings LLC Company: Crapo Estate Holding
+  
+crapo_senate <- assets_LLC %>%
+  filter(str_detect(asset,"Crapo Estate"))
+
+crapo_ppp <- ppp12 %>%
+  filter(str_detect(BorrowerName,"^CRAPO"))
+
+filtering_join_df <- crapo_senate %>%
+  separate(asset, into=c("asset","junk"), sep=":") %>%
+  #inner_join(crapo_ppp, by=c( "asset" = "BorrowerName"))
+  stringdist_join(crapo_ppp, by=c("asset" = "BorrowerName"),max_dist=20)
+#install.packages('fuzzyjoin')
+#library(fuzzyjoin)
+
+type <- senate_assets %>%
+  group_by(asset_type) %>%
+  count()
+
+```
+Cleaning Data
+```{r}
+
+cleaned_data12<-ppp12 %>%
+  select(LoanNumber,BusinessType,DateApproved,BorrowerName,BorrowerAddress,BorrowerCity, BorrowerState, LoanStatus, InitialApprovalAmount, CurrentApprovalAmount, ForgivenessAmount) %>%
+   mutate(BorrowerName=str_sub(BorrowerName)) %>%
+  mutate(BorrowerName=tolower(BorrowerName))
+
+```
+LLC-filtering for all PPP. Usually a congressperson owns an LLC so we'll be looking at that. 
+```{r}
+#cleaned_data_LLC_1<-cleaned_data1 %>%
+ # mutate(BorrowName=str_sub(BorrowerName)) %>%
+  #mutate(BorrowerName=tolower(BorrowName)) %>%
+#rename(senator_full_name=BorrowerName) %>%
+ # filter(BusinessType=="Limited  Liability Company(LLC)") %>%
+#drop_na(senator_full_name)
+
+#All datasets keep going down from 1-12. 
+
+cleaned_data_LLC_12<-cleaned_data12 %>%
+rename(senator_full_name=BorrowerName) %>%
+  filter(BusinessType=="Limited  Liability Company(LLC)") %>%
+drop_na(senator_full_name)
+```
+Merging (based on LLC)
+```{r}
+
+
+```
+
+Joining (more of thoughts, talk to Sean about this)
+```{r}
+senators_all %>%
+  mutate(senator_full_name=str_sub(senator_full_name)) %>%
+  mutate(senator_full_name=tolower(senator_full_name))
+
+#We basically want to match the names of the senators, so we are trying to lowercase and take away the middle initials, so then we can merge by name
+
+joined_data <- semi_join(cleaned_data_LLC_12,senators_all, by=c("senator_full_name"))
+joined_data_test <- anti_join(cleaned_data_LLC_12,senators_all, by=c("senator_full_name"))
+
+
+
+
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
