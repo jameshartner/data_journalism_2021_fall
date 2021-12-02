@@ -16,6 +16,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 ```{r}
 install.packages('stringr')
+install.packages('fuzzyjoin')
 
 ```
 
@@ -24,6 +25,7 @@ library('tidyverse')
 library('tidycensus')
 library('janitor')
 library('stringr')
+library(fuzzyjoin)
 ```
 
 ```{r}
@@ -47,7 +49,8 @@ senate_assets <-read_rds("data/senate_assets.rds") %>%
   filter(asset_type %in% c("Business Entity", "Accounts Receivable", "corporate Securities Non-Public Stock", "Farm", "Other Securities", "Real Estate Commercial", "Real Estate Residential")) %>%
 select(senator_full_name, asset, value) %>%
   mutate(senator_full_name=str_sub(senator_full_name)) %>%
-  mutate(senator_full_name=tolower(senator_full_name))
+  mutate(senator_full_name=tolower(senator_full_name)) %>%
+  select(senator_full_name, asset)
 
 # STRING DETECT Business Entity
 # STRING DETECT Accounts Receivable
@@ -63,7 +66,8 @@ senate_earned_income<-read_rds("data/senate_earned_income.rds") %>%
   select(-report_id, -report_title, -report_url, -filed_date, -data, -v1, -number, -who_was_paid, -senator_first_name, -senator_last_name,) %>%
   mutate(senator_full_name=str_sub(senator_full_name)) %>%
   mutate(senator_full_name=tolower(senator_full_name)) %>%
-  rename(who_paid_them = who_paid)
+  rename(asset = who_paid) %>%
+  select(senator_full_name, asset)
 
 
 # Board Compensation
@@ -79,7 +83,9 @@ senate_earned_income<-read_rds("data/senate_earned_income.rds") %>%
 ## Agreements
 
   senate_agreements <- read_rds("data/senate_agreements.rds")%>%
-  filter(str_detect(type,"Promissory|promissory|Proprietorship|Leave|Continuation"))
+  filter(str_detect(type,"Promissory|promissory|Proprietorship|Leave|Continuation")) %>%
+  rename(asset = parties_involved) %>%
+    select(senator_full_name, asset)
 
 # Continuation of payments by former employer
 # Leave of absence
@@ -92,14 +98,34 @@ senate_positions<-read_rds("data/senate_positions.rds") %>%
 filter(position_held != "Representative") %>%
 filter(position_held != "Trustee") %>%
 filter(position_held != "Other (Co-Trustee)") %>%
-select(senator_full_name, position_held, entity)
+rename(asset = entity) %>%
+select(senator_full_name, asset)
 
 #####
 ## Combine various filtered senate ownership tables into a single table with only the information you need 
 ##### 
 
 # Write code to combine into a single table
-filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income, senate_positions, senate_agreements)
+filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income, senate_positions, senate_agreements) %>%
+  rename(BorrowerName=asset) %>%
+  filter(str_detect(BorrowerName,	"Crapo Enterprises"))
+
+crapo <- filtered_data %>%
+  select(senator_full_name,BorrowerName) %>%
+  mutate(info_source = "financial_disclosure_data") %>%
+  mutate(BorrowerName = paste0("**",BorrowerName))
+
+ppp_companies <- ppp_loan_slice %>%
+  mutate(senator_full_name = NA,
+         info_source = "ppp_loan_data") %>%
+  select(senator_full_name, BorrowerName, info_source)
+
+ppp_plus_senator <- crapo %>%
+  bind_rows(ppp_companies) %>%
+  filter(str_detect(BorrowerName,"Crapo|CRAPO"))
+
+write_csv(ppp_plus_senator,"crapo_test.csv")
+
 #####
 ## Remove any objects we no longer need  
 ##### 
@@ -136,8 +162,7 @@ ppp_sba_loan_urls <- c(
 
 # Just for testing purposes, keep only the first URL on the list.  
 # Comment this out later when we run the full loop.
-ppp_sba_loan_urls <- ppp_sba_loan_urls %>%
-  head(1)
+ppp_sba_loan_urls <- ppp_sba_loan_urls[13]
 
 #####
 ## Define column types for PPP data
@@ -208,23 +233,24 @@ ppp_cols <- cols(LoanNumber = col_character(),
 
 for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   
-  #####
-  ## Read in the csv from sba site
-  #####
-  
   ## The filepath is the loan url from the list above.  
   ## The column data types (col_types) are set by the ppp_cols object we defined above
   ## For testing, set n_max to only read in first row.  Remove that when we run for real. 
   ## 
-  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=100000) 
+  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=10000000) %>%
+    select(BorrowerName) %>%
+    distinct(BorrowerName) %>%
+    filter(!is.na(BorrowerName))
   
-  
+  print("ppp data loaded")
   #####
   ## Do any cleaning to the ppp_loan_slice data biz name column to prepare for fuzzy join
   #####
   
   # Put your fuzzy join code here
   
+  #fuzzy_join
+  #fuzzy_join <- filtered_data %>% stringdist_inner_join(ppp_loan_slice, by=c("BorrowerName"))
   #####
   ## Fuzzy join to ppp data
   #####
@@ -234,6 +260,7 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   #####
   ## Write out the results of this filtering fuzzy join as rds
   #####
+  
   
   # Put your write out to rds here
   # You'll need to build the filename for each one as part of the loop, so you don't overwrite.
@@ -248,6 +275,8 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   #####
   ## Nice little print statement to tell you're done the first part of the loop
   #####
+  
+  #
   
 
 }
@@ -367,7 +396,6 @@ LLC-filtering for all PPP. Usually a congressperson owns an LLC so we'll be look
 
 cleaned_data_LLC_12<-cleaned_data12 %>%
 rename(senator_full_name=BorrowerName) %>%
-  %>%
 drop_na(senator_full_name)
 ```
 Merging (based on LLC)
