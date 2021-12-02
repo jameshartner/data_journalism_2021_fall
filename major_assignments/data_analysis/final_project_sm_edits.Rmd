@@ -38,8 +38,16 @@ library('stringr')
 # Add code to filter as you read in
 
 ## Assets
-
-senate_assets <-read_rds("data/senate_assets.rds")
+senate_assets <-read_rds("data/senate_assets.rds") %>%
+  mutate(asset_type=case_when(
+    str_detect(asset_type,"^Business Entity") ~ "Business Entity",
+    str_detect(asset_type, "^Accounts Receivable") ~ "Accounts Receivable", 
+         TRUE~asset_type 
+  )) %>%
+  filter(asset_type %in% c("Business Entity", "Accounts Receivable", "corporate Securities Non-Public Stock", "Farm", "Other Securities", "Real Estate Commercial", "Real Estate Residential")) %>%
+select(senator_full_name, asset, value) %>%
+  mutate(senator_full_name=str_sub(senator_full_name)) %>%
+  mutate(senator_full_name=tolower(senator_full_name))
 
 # STRING DETECT Business Entity
 # STRING DETECT Accounts Receivable
@@ -50,8 +58,13 @@ senate_assets <-read_rds("data/senate_assets.rds")
 # Real Estate Residential
 
 ## Earned Income
+senate_earned_income<-read_rds("data/senate_earned_income.rds") %>%
+    filter(type %in% c("Board Compensation", "Member Draw", "Other(Consulting fees)","Other(Religious Service)","Other(Religious Services)","Other(Salary & Benefits)", "Partnership Distributions", "Salary", "Self-Employment Income", "Wages")) %>%
+  select(-report_id, -report_title, -report_url, -filed_date, -data, -v1, -number, -who_was_paid, -senator_first_name, -senator_last_name,) %>%
+  mutate(senator_full_name=str_sub(senator_full_name)) %>%
+  mutate(senator_full_name=tolower(senator_full_name)) %>%
+  rename(who_paid_them = who_paid)
 
-senate_earned_income<-read_rds("data/senate_earned_income.rds")
 
 # Board Compensation
 # Member Draw
@@ -65,7 +78,8 @@ senate_earned_income<-read_rds("data/senate_earned_income.rds")
 
 ## Agreements
 
-senate_agreements <- read_rds("data/senate_agreements.rds")
+  senate_agreements <- read_rds("data/senate_agreements.rds")%>%
+  filter(str_detect(type,"Promissory|promissory|Proprietorship|Leave|Continuation"))
 
 # Continuation of payments by former employer
 # Leave of absence
@@ -73,15 +87,19 @@ senate_agreements <- read_rds("data/senate_agreements.rds")
 # Other (Sole Proprietorship, now inactive)
 
 ## Positions
-senate_positions<-read_rds("data/senate_positions.rds")
+senate_positions<-read_rds("data/senate_positions.rds") %>%
 # All but Trustee or Representative 
+filter(position_held != "Representative") %>%
+filter(position_held != "Trustee") %>%
+filter(position_held != "Other (Co-Trustee)") %>%
+select(senator_full_name, position_held, entity)
 
 #####
 ## Combine various filtered senate ownership tables into a single table with only the information you need 
 ##### 
 
 # Write code to combine into a single table
-
+filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income, senate_positions, senate_agreements)
 #####
 ## Remove any objects we no longer need  
 ##### 
@@ -89,8 +107,8 @@ senate_positions<-read_rds("data/senate_positions.rds")
 # Use rm() to remove unneeded senate objects
 # After running rm(), run gc() to remove objects from memory
 # These are big files, so memory management will be important
-rm(senate_assets)
-gc()
+#rm(filtered_data)
+#gc()
 
 #####
 ## Define list of sba ppp loan urls
@@ -349,7 +367,7 @@ LLC-filtering for all PPP. Usually a congressperson owns an LLC so we'll be look
 
 cleaned_data_LLC_12<-cleaned_data12 %>%
 rename(senator_full_name=BorrowerName) %>%
-  filter(BusinessType=="Limited  Liability Company(LLC)") %>%
+  %>%
 drop_na(senator_full_name)
 ```
 Merging (based on LLC)
