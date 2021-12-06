@@ -109,6 +109,8 @@ select(senator_full_name, asset)
 filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income,senate_agreements) 
 
 ```
+
+
 ```{r}
 #CLEANED FILTERED DATA
 
@@ -174,7 +176,7 @@ ppp_sba_loan_urls <- c(
 
 # Just for testing purposes, keep only the first URL on the list.  
 # Comment this out later when we run the full loop.
-ppp_sba_loan_urls <- ppp_sba_loan_urls[12]
+ppp_sba_loan_urls <- ppp_sba_loan_urls[13]
 
 #####
 ## Define column types for PPP data
@@ -249,7 +251,7 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   ## The column data types (col_types) are set by the ppp_cols object we defined above
   ## For testing, set n_max to only read in first row.  Remove that when we run for real. 
   ## 
-  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=10000000)  %>%
+  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=400000)  %>%
     select(BorrowerName) %>%
     distinct(BorrowerName) %>%
     filter(!is.na(BorrowerName))
@@ -276,12 +278,12 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   
   # Put your write out to rds here
   # You'll need to build the filename for each one as part of the loop, so you don't overwrite.
-  write.csv(paste("ppp_loan_slice",fuzzy_join,".csv" ))
+  #write.csv(paste("ppp_loan_slice",fuzzy_join,".csv" ))
   #####
   ## Clean up memory
   #####
-  rm(ppp_loan_slice)
-  gc()
+  #rm(ppp_loan_slice)
+  #gc()
   # Use rm() to remove the ppp_loan_slice
   # Use gc() to free up memory
   
@@ -293,11 +295,13 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   
 
 }
+write.csv(fuzzy_join,"first_400000_fuzzy_join(13).csv")
 
 
 
-
-
+rm(ppp_loan_slice)
+rm(fuzzy_join)
+gc()
 
 
 
@@ -305,6 +309,58 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
 
 ```
 
+Loading in the csv files that we made when we fuzzy joined. 
+
+```{r}
+one<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(1).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+two<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(2).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+three<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(3).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+four<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(4).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+five<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(5).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+six<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(6).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+seven<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(7).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+eight<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(8).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+nine<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(9).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+ten<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(10).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+eleven<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(11).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+twelve<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(12).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+thirteen<-read_csv("rds_files_from_for_loop/first_400000_fuzzy_join(13).csv") %>%
+  select(senator_full_name,BorrowerName.x,BorrowerName.y)
+
+first_400000_of_all_data<-bind_rows(one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen)
+
+rm(one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen)
+```
+##Guaranteed Matches
+
+Cindy Hyde Smith had a perfect match with Mathis Farm, INC
+
+
+##Possible Matches
+
+Rick Scott matched with AJ 3 LLC to AJ LLC. Further investigation is needed. 
+
+
+
+
+
+
+
+
+
+##Garbage from start of the final project
 
 
 ## NOTES-James:
