@@ -10,7 +10,7 @@ So far, we’ve been able to pull out one particularly interesting loan connecte
 Moving forward, we’re looking to expand the scope of our search. To this point, we focused on businesses described as LLCs, but we’re planning on identifying businesses under other descriptions, as well. For now though, we’re trying to find the best way to clean the names of the businesses so that we can easily join the datasets together. 
 
 
-#Second Memo (Deliverable Four)
+# Second Memo (Deliverable Four)
 Initial pitch: The ties between politicians and their interests in private business practices will always be a pertinent aspect of the private lives of those that run the United States government. But it’s an aspect that doesn’t get talked about as often as its implications would warrant. 
 
 The Small Business Administration’s Paycheck Protection Program, put in place in the early days of the COVID-19 pandemic, gave an extended glimpse into the business practices and monetary allocations of those politicians. Reporting on the PPP requests of the everyday American is fairly commonplace; pulling the numbers tied to congresspeople is far more interesting to the American public. 
