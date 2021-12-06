@@ -113,7 +113,8 @@ filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income,
 #CLEANED FILTERED DATA
 
 
-clean_filter <- read.csv("filtered_data_cleaned.csv")
+clean_filter <- read.csv("data/filtered_data_cleaned.csv") %>%
+  rename(BorrowerName= asset_cleaned)
 ```
 
 ```{r}
@@ -173,7 +174,7 @@ ppp_sba_loan_urls <- c(
 
 # Just for testing purposes, keep only the first URL on the list.  
 # Comment this out later when we run the full loop.
-ppp_sba_loan_urls <- ppp_sba_loan_urls[13]
+ppp_sba_loan_urls <- ppp_sba_loan_urls[12]
 
 #####
 ## Define column types for PPP data
@@ -248,10 +249,10 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   ## The column data types (col_types) are set by the ppp_cols object we defined above
   ## For testing, set n_max to only read in first row.  Remove that when we run for real. 
   ## 
-  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=10000) # %>%
-   # select(BorrowerName) %>%
-    #distinct(BorrowerName) %>%
-    #filter(!is.na(BorrowerName))
+  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=10000000)  %>%
+    select(BorrowerName) %>%
+    distinct(BorrowerName) %>%
+    filter(!is.na(BorrowerName))
   
   print("ppp data loaded")
   #####
@@ -261,7 +262,7 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   # Put your fuzzy join code here
   
   #fuzzy_join
-  #fuzzy_join <- filtered_data %>% stringdist_inner_join(ppp_loan_slice, by=c("BorrowerName"))
+  fuzzy_join <-clean_filter %>% stringdist_inner_join(ppp_loan_slice, by=c("BorrowerName"))
   #####
   ## Fuzzy join to ppp data
   #####
@@ -275,18 +276,19 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   
   # Put your write out to rds here
   # You'll need to build the filename for each one as part of the loop, so you don't overwrite.
-  
+  write.csv(paste("ppp_loan_slice",fuzzy_join,".csv" ))
   #####
   ## Clean up memory
   #####
-  
+  rm(ppp_loan_slice)
+  gc()
   # Use rm() to remove the ppp_loan_slice
   # Use gc() to free up memory
   
   #####
   ## Nice little print statement to tell you're done the first part of the loop
   #####
-  
+  print("Hey look, we're done with the first slice")
   #
   
 
