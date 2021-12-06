@@ -106,25 +106,36 @@ select(senator_full_name, asset)
 ##### 
 
 # Write code to combine into a single table
-filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income, senate_positions, senate_agreements) %>%
-  rename(BorrowerName=asset) %>%
-  filter(str_detect(BorrowerName,	"Crapo Enterprises"))
+filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income,senate_agreements) 
 
-crapo <- filtered_data %>%
-  select(senator_full_name,BorrowerName) %>%
-  mutate(info_source = "financial_disclosure_data") %>%
-  mutate(BorrowerName = paste0("**",BorrowerName))
+```
+```{r}
+#CLEANED FILTERED DATA
 
-ppp_companies <- ppp_loan_slice %>%
-  mutate(senator_full_name = NA,
-         info_source = "ppp_loan_data") %>%
-  select(senator_full_name, BorrowerName, info_source)
 
-ppp_plus_senator <- crapo %>%
-  bind_rows(ppp_companies) %>%
-  filter(str_detect(BorrowerName,"Crapo|CRAPO"))
+clean_filter <- read.csv("filtered_data_cleaned.csv")
+```
 
-write_csv(ppp_plus_senator,"crapo_test.csv")
+```{r}
+
+#rename(BorrowerName=asset) %>%
+ # filter(str_detect(BorrowerName,	"Crapo Enterprises"))
+
+#crapo <- filtered_data %>%
+ # select(senator_full_name,BorrowerName) %>%
+  #mutate(info_source = "financial_disclosure_data") %>%
+  #Mutate(BorrowerName = paste0("**",BorrowerName))
+
+#ppp_companies <- ppp_loan_slice %>%
+ # mutate(senator_full_name = NA,
+  #       info_source = "ppp_loan_data") %>%
+  #select(senator_full_name, BorrowerName, info_source)
+
+#ppp_plus_senator <- crapo %>%
+ # bind_rows(ppp_companies) %>%
+  #filter(str_detect(BorrowerName,"Crapo|CRAPO"))
+
+#write_csv(ppp_plus_senator,"crapo_test.csv")
 
 #####
 ## Remove any objects we no longer need  
@@ -237,10 +248,10 @@ for (ppp_sba_loan_url in ppp_sba_loan_urls) {
   ## The column data types (col_types) are set by the ppp_cols object we defined above
   ## For testing, set n_max to only read in first row.  Remove that when we run for real. 
   ## 
-  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=10000000) %>%
-    select(BorrowerName) %>%
-    distinct(BorrowerName) %>%
-    filter(!is.na(BorrowerName))
+  ppp_loan_slice <- read_csv(ppp_sba_loan_url, col_types=ppp_cols, n_max=10000) # %>%
+   # select(BorrowerName) %>%
+    #distinct(BorrowerName) %>%
+    #filter(!is.na(BorrowerName))
   
   print("ppp data loaded")
   #####
@@ -304,7 +315,13 @@ Also data from Sean. We can join these with the PPP data and go from there.
 
 ```{r}
 #Data from Sean 
+#data that needs to be cleaned 
 
+write_csv(senate_assets, "senate_assets.csv")
+write_csv(senate_agreements, "senate_agreements.csv")
+write_csv(senate_positions, "senate_positions.csv")
+write_csv(senate_earned_income, "senate_earned_income.csv")
+write_csv(filtered_data, "filtered_data.csv")
 #####
 ## Load Senate Data 
 #####
