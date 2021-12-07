@@ -327,8 +327,9 @@ ppp_sba_loan_urls <- c(
   "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/cfd2e743-8809-49be-90b6-0e22f453be23/download/public_150k_plus_211121.csv"
 
 )
+```
 
-
+```{r}
 #ppp_sba_loan_urls <- ppp_sba_loan_urls[13]
 #url <- ppp_sba_loan_urls
   
@@ -385,7 +386,7 @@ look_for_matches <- function(url){
 
 # 
 lapply(ppp_sba_loan_urls, look_for_matches)
-
+write_rds(paste0("rds_files_from_function", url, ".rds"))
 
 #joseph manchin A&P
 # List of ppp companies
