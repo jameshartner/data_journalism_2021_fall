@@ -334,8 +334,10 @@ ppp_sba_loan_urls <- c(
 #url <- ppp_sba_loan_urls
   
 #Read in dataframe of senator companies and then create one list just of the senators companies columnn 
-senator_ownership_data <- read_csv("data/cleaned_version_two.csv", n_max=1000) %>%
-  filter(!is.na(cleaned_asset_name))
+senator_ownership_data <- read_csv("data/final_cleaned.csv", n_max=1000) %>%
+  filter(!is.na(cleaned_asset_name)) %>%
+  mutate(cleaned_asset_name=str_to_upper(cleaned_asset_name)) %>%
+  mutate(cleaned_asset_name=str_trim(cleaned_asset_name,side=c("both")))
 
 # Create list of senate companies
 senator_companies <- senator_ownership_data$cleaned_asset_name
@@ -349,7 +351,7 @@ all_match_results <- tibble()
 look_for_matches <- function(url){
   
   #Need to make a list of the ppp_borrowers from the sba loans
-  ppp_borrowers<-read_csv(url, col_select=c("BorrowerName"), n_max=10000) %>%
+  ppp_borrowers<-read_csv(url, col_select=c("BorrowerName"), n_max=100000) %>%
     as_vector()
   
   
@@ -378,15 +380,19 @@ look_for_matches <- function(url){
   # add results to master df
   all_match_results <<- all_match_results %>%
     bind_rows(match_df)
+  print(url)
   
 }
 
 # run it once
 #look_for_matches(url)
 
-# 
+#
 lapply(ppp_sba_loan_urls, look_for_matches)
-write_rds(paste0("rds_files_from_function", url, ".rds"))
+
+date<-today()
+
+write.csv(all_match_results, paste0("data/tibbleshit",date, ".csv"))
 
 #joseph manchin A&P
 # List of ppp companies
@@ -417,7 +423,7 @@ write_rds(paste0("rds_files_from_function", url, ".rds"))
  # inner_join(ppp_dataframe) %>%
   #mutate(ppp_data_slice_file = "file_a")
 
-
+#Ron Widen
 ```
 
 Loading in the csv files that we made when we fuzzy joined. 
