@@ -303,8 +303,118 @@ rm(ppp_loan_slice)
 rm(fuzzy_join)
 gc()
 
+```
+```{r}
+cleaned_filtered_v2 <- read_csv("data/cleaned_version_two.csv")
+
+```
+```{r}
 
 
+ppp_sba_loan_urls <- c(
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/91337e12-dc20-4f13-bf24-4bdbe830f9e0/download/public_up_to_150k_1_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/3af99a69-abb2-40f8-bcb3-52c6f745ebdf/download/public_up_to_150k_2_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/0c9dc3d0-ff4d-456a-9f3c-2c67bd2cbe1c/download/public_up_to_150k_3_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/66c26263-cef8-4f66-96f3-7afb13460d9c/download/public_up_to_150k_4_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/78aaf3ae-4524-4c65-8482-27e5838891a7/download/public_up_to_150k_5_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/4068a624-0a83-4b98-a60c-fef367c9b7c6/download/public_up_to_150k_6_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/2f7f8f60-38b7-4566-8a61-5cdbf1eaedeb/download/public_up_to_150k_7_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/4f9f0ab6-fd61-409e-96f1-f735949eb356/download/public_up_to_150k_8_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/e7cb1a0b-af34-41f0-9231-dbd87f2952f0/download/public_up_to_150k_9_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/77b6f37c-932f-4384-974b-4c8435d22d5a/download/public_up_to_150k_10_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/8b4306c8-7efd-4ddd-be27-fac97af00cd6/download/public_up_to_150k_11_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/2598c43b-b031-4f35-a740-d4f13085a6f7/download/public_up_to_150k_12_211121.csv",
+  "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/cfd2e743-8809-49be-90b6-0e22f453be23/download/public_150k_plus_211121.csv"
+
+)
+
+
+#ppp_sba_loan_urls <- ppp_sba_loan_urls[13]
+#url <- ppp_sba_loan_urls
+  
+#Read in dataframe of senator companies and then create one list just of the senators companies columnn 
+senator_ownership_data <- read_csv("data/cleaned_version_two.csv", n_max=1000) %>%
+  filter(!is.na(cleaned_asset_name))
+
+# Create list of senate companies
+senator_companies <- senator_ownership_data$cleaned_asset_name
+
+#This is just a test, wait until data is fully cleaned 
+# create another list of senators name
+senator_ownership<- senator_ownership_data$senator_full_name
+
+all_match_results <- tibble()
+
+look_for_matches <- function(url){
+  
+  #Need to make a list of the ppp_borrowers from the sba loans
+  ppp_borrowers<-read_csv(url, col_select=c("BorrowerName"), n_max=10000) %>%
+    as_vector()
+  
+  
+  # Look for partial matches
+  possible_match <-pmatch(senator_companies, ppp_borrowers)
+  
+  
+  # create ppp dataframe
+  ppp_dataframe <- tibble(
+    ppp_borrowers = ppp_borrowers
+    ) %>%
+    mutate(match_id = row_number())
+
+  # dataframe
+  senator_companies_dataframe <- tibble(
+    senator_companies = senator_companies,
+    senator_ownership = senator_ownership,
+    match_id = possible_match
+  )
+  
+  # Join together
+  match_df <- senator_companies_dataframe %>%
+    inner_join(ppp_dataframe) %>%
+    mutate(ppp_data_slice_file = "file_a")
+    
+  # add results to master df
+  all_match_results <<- all_match_results %>%
+    bind_rows(match_df)
+  
+}
+
+# run it once
+#look_for_matches(url)
+
+# 
+lapply(ppp_sba_loan_urls, look_for_matches)
+
+
+#joseph manchin A&P
+# List of ppp companies
+#ppp_borrowers <- c("apple company", "pear llc", "banana ltd","grapes llc")
+# List of senator companies
+#senator_companies <- c("pear", "banana", "apple", "plum")
+#senator_ownership <- c("bob","fred","tom","jack")
+
+# Look for partial matches
+#matches <- pmatch(senator_companies
+
+#,ppp_borrowers)
+## We can also examine this the other way, by switching order in pmatch
+## We can also do pure match with intersect(A,B)
+# dataframe
+#ppp_dataframe <- tibble(
+ # ppp_borrowers = ppp_borrowers
+#) %>%
+ # mutate(match_id = row_number())
+# dataframe
+#senator_companies_dataframe <- tibble(
+ # senator_companies = senator_companies,
+  #senator_ownership = senator_ownership,
+  #match_id = matches
+  #)
+# Join together
+#match_df <- senator_companies_dataframe %>%
+ # inner_join(ppp_dataframe) %>%
+  #mutate(ppp_data_slice_file = "file_a")
 
 
 ```
@@ -347,10 +457,10 @@ rm(one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen)
 
 Cindy Hyde Smith had a perfect match with Mathis Farm, INC
 
-
 ##Possible Matches
 
 Rick Scott matched with AJ 3 LLC to AJ LLC. Further investigation is needed. 
+
 
 
 
