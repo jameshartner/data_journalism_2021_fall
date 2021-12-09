@@ -26,6 +26,10 @@ library('tidycensus')
 library('janitor')
 library('stringr')
 library(fuzzyjoin)
+library(lubridate)
+library(ggrepel)
+library(sf)
+library(dplyr)
 ```
 
 ```{r}
@@ -327,6 +331,45 @@ ppp_sba_loan_urls <- c(
   "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/cfd2e743-8809-49be-90b6-0e22f453be23/download/public_150k_plus_211121.csv"
 
 )
+
+#ppp_sba_loan_urls <- ppp_sba_loan_urls[12:13]
+
+split_files <- function(url) {
+  
+  file_name <- str_sub(url,start=-13L, end=-1L) 
+  file_name <- str_sub(file_name,start=1L, end=2L)
+  file_name <- str_remove(file_name,"_")
+  
+  if (file_name != "us") {
+    file_name <- str_pad(file_name,width=2,side="left",pad=0)    
+  }
+  
+  
+  temp <- read_csv(url, col_select=c("BorrowerName"))
+  number_of_rows <- nrow(temp)
+  slice_size <- 100000
+  number_of_loops <- ceiling(number_of_rows/slice_size)
+  
+  for (loop_number in 0:number_of_loops) {
+
+    start_position <- (loop_number*slice_size)+1
+    end_position <- start_position+(slice_size-1)
+    temp_slice <- temp %>%
+      slice(start_position:end_position)
+    
+    file_path <- paste0("ppp_slices/file_",file_name,"_",end_position,".rds")
+    write_rds(temp_slice,file_path)
+    
+  }
+  
+  rm(temp, temp_slice)
+  gc()
+  
+  
+}
+
+lapply(ppp_sba_loan_urls,split_files)
+
 ```
 
 ```{r}
@@ -348,51 +391,101 @@ senator_ownership<- senator_ownership_data$senator_full_name
 
 all_match_results <- tibble()
 
-look_for_matches <- function(url){
+#url <- ppp_sba_loan_urls
+
+files <- list.files("ppp_slices")
+files <- paste0("ppp_slices/",files)
+
+files <- files[[1]]
+
+look_for_matches <- function(file){
   
   #Need to make a list of the ppp_borrowers from the sba loans
-  ppp_borrowers<-read_csv(url, col_select=c("BorrowerName"), n_max=100000) %>%
-    as_vector()
+  ppp_borrowers<-read_rds(file) %>%
+    as.list()
+  
+  # Extract the BorrowerName nested list from ppp_borrowers
+  ppp_borrowers <- ppp_borrowers$BorrowerName
   
   
-  # Look for partial matches
-  possible_match <-pmatch(senator_companies, ppp_borrowers)
+  # Look for single and multiple partial matches
+  char_possible_match <- charmatch(senator_companies,ppp_borrowers)
   
-  
-  # create ppp dataframe
-  ppp_dataframe <- tibble(
-    ppp_borrowers = ppp_borrowers
-    ) %>%
-    mutate(match_id = row_number())
-
-  # dataframe
-  senator_companies_dataframe <- tibble(
+  # Create a dataframe of companies with single and multiple matches
+  # zero represents multiple matches, any other number represents single
+  matches_df <- tibble(
     senator_companies = senator_companies,
-    senator_ownership = senator_ownership,
-    match_id = possible_match
-  )
+    match = char_possible_match) %>%
+    filter(!is.na(match))
   
-  # Join together
-  match_df <- senator_companies_dataframe %>%
-    inner_join(ppp_dataframe) %>%
-    mutate(ppp_data_slice_file = "file_a")
+  # Make a dataframe of ppp_borrowers
+  ppp_borrowers <- ppp_borrowers %>%
+    as_tibble() %>%
+    rename(BorrowerName=value)
+  
+  multiple_matches_df <- matches_df %>%
+    filter(match == "0")
+  
+  single_matches_df <- matches_df %>%
+    filter(match != "0")
+  
+  multiple_match_list <- multiple_matches_df %>%
+    select(senator_companies) %>%
+    as.list()
+  
+  multiple_match_list <- multiple_match_list$senator_companies
+  
+  multiple_matches_with_senator_companies <- tibble()
+  
+  # Loop through multiple matches
+  for (multiple_match in multiple_match_list) {
+    temp <- ppp_borrowers %>%
+      filter(str_detect(BorrowerName,multiple_match)) %>%
+      mutate(senator_companies = multiple_match) %>%
+      select(senator_companies,BorrowerName) %>%
+      mutate(match_type = "multiple")
     
-  # add results to master df
-  all_match_results <<- all_match_results %>%
-    bind_rows(match_df)
-  print(url)
+    multiple_matches_with_senator_companies <- multiple_matches_with_senator_companies %>%
+      bind_rows(temp)
+    
+    
+  }
   
-}
 
-# run it once
-#look_for_matches(url)
+  # create ppp dataframe
+  ppp_borrowers <- ppp_borrowers %>%
+    mutate(match = row_number())
+  
+  # connect senator companies to matches
+  single_matches_with_senator_companies <- single_matches_df %>%
+    inner_join(ppp_borrowers) %>%
+    select(-match) %>%
+    mutate(match_type="single")
+  
+  matches_with_senator_companies <- single_matches_with_senator_companies %>%
+    bind_rows(multiple_matches_with_senator_companies)
+  
+ # Bind to all match results
+  all_match_results <<- all_match_results %>%
+    bind_rows(matches_with_senator_companies) %>%
+    mutate(file_location = file)
+  
+  
+  
+}  
+  
+lapply(files, look_for_matches)
 
-#
-lapply(ppp_sba_loan_urls, look_for_matches)
+all_match_results <<- all_match_results %>%
+  inner_join(senator_ownership_data, by=c("senator_companies" = "cleaned_asset_name"))
 
-date<-today()
+x <- all_match_results %>%
+  group_by(senator_companies) %>%
+  count()
 
-write.csv(all_match_results, paste0("data/tibbleshit",date, ".csv"))
+#date<-today()
+
+#write.csv(all_match_results, paste0("data/tibbleshit",date, ".csv"))
 
 #joseph manchin A&P
 # List of ppp companies
