@@ -31,7 +31,6 @@ library(lubridate)
 library(ggrepel)
 library(sf)
 library(dplyr)
-library(readr)
 ```
 
 ```{r}
@@ -209,21 +208,10 @@ all_match_results <- tibble()
 #url <- ppp_sba_loan_urls
 
 files <- list.files("ppp_slices")
-files <- paste0("ppp_slices/",files) 
-  
-test <-read_rds
-  as.tibble() %>%
-  read_rds("ppp_slices/",files) %>%
-  bind_rows()
+files <- paste0("ppp_slices/",files)
 
 
-#for loop that binds every single file in ppp_slices together
-folder <- list.files("ppp_slices/")
-for (files in folder) {
-files <- read_rds() %>%
-  bind_rows() %>%
-  as.tibble()
-}
+look_for_matches <- function(file){
   
   #Need to make a list of the ppp_borrowers from the sba loans
   ppp_borrowers<-read_rds(file) %>%
@@ -380,11 +368,11 @@ senator_ownership_data <- read_csv("data/final_cleaned.csv", n_max=1000) %>%
   #filter(cleaned_asset_name != "TWI")
 
 # Create list of senate companies
-senator_companies <- all_match_results$cleaned_asset_name
+senator_companies <- senator_ownership_data$cleaned_asset_name
 
 #This is just a test, wait until data is fully cleaned 
 # create another list of senators name
-senator_ownership<- all_match_results$senator_full_name
+senator_ownership<- senator_ownership_data$senator_full_name
 
 all_match_results <- tibble()
 
