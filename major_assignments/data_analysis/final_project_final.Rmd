@@ -32,11 +32,8 @@ library(ggrepel)
 library(sf)
 library(dplyr)
 ```
-
+This was how we cleaned your data that you gave us. After that, we used Google Sheets to shorten some of the asset names for each senator company and remove any senate assets like farm land, stocks, etc. 
 ```{r}
-
-### SEAN CODE ADDITIONS
-
 #####
 ## Load senate ownership data
 #####
@@ -116,11 +113,10 @@ filtered_data <- bind_rows(senate_assets, senate_positions,senate_earned_income,
 ```
 
 
-```{r}
-cleaned_filtered_v2 <- read_csv("data/cleaned_version_two.csv")
 
-```
 ```{r}
+
+#This reads all of the URLs from the PPP dataset
 ppp_sba_loan_urls <- c(
   "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/91337e12-dc20-4f13-bf24-4bdbe830f9e0/download/public_up_to_150k_1_211121.csv",
   "https://data.sba.gov/dataset/8aa276e2-6cab-4f86-aca4-a7dde42adf24/resource/3af99a69-abb2-40f8-bcb3-52c6f745ebdf/download/public_up_to_150k_2_211121.csv",
@@ -141,7 +137,7 @@ ppp_sba_loan_urls <- c(
 
 
 ```
-
+This broke down all of the CSV files from the SBA into 100,000 rows. This allowed for my computer to run through all of the code. All of the data sliced is saved into "ppp_slices." However, these sliced datasets will be removed from the folder and replaced with a filtered part of the respective slice. 
 
 ```{r}
 #ppp_sba_loan_urls <- ppp_sba_loan_urls[7:8]
@@ -183,7 +179,7 @@ split_files <- function(url) {
 lapply(ppp_sba_loan_urls,split_files)
 
 ```
-
+This piece of code soft matched names from the final_cleaned dataset that we had of senator companies from Google Sheets and the PPP datasets. We then created a final matching dataset with all of the "soft" matches meaning if there is a name that kind of matched or exactly matched with a borrower name from a PPP slice, it would match. 
 ```{r}
 
 #url <- ppp_sba_loan_urls
@@ -355,119 +351,53 @@ lapply(ppp_sba_loan_urls,split_files_v2)
 
 ```
 ```{r}
-test<-read_rds("ppp_slices/file_01_100000.rds")
-#ppp_sba_loan_urls <- ppp_sba_loan_urls[13]
-#url <- ppp_sba_loan_urls
-
-#Read in dataframe of senator companies and then create one list just of the senators companies columnn 
-senator_ownership_data <- read_csv("data/final_cleaned.csv", n_max=1000) %>%
-  filter(!is.na(cleaned_asset_name)) %>%
-  mutate(cleaned_asset_name=str_to_upper(cleaned_asset_name)) %>%
-  mutate(cleaned_asset_name=str_trim(cleaned_asset_name,side=c("both"))) 
-  #filter(cleaned_asset_name != "FRA") %>%
-  #filter(cleaned_asset_name != "TWI")
-
-# Create list of senate companies
-senator_companies <- senator_ownership_data$cleaned_asset_name
-
-#This is just a test, wait until data is fully cleaned 
-# create another list of senators name
-senator_ownership<- senator_ownership_data$senator_full_name
-
-all_match_results <- tibble()
-
-#url <- ppp_sba_loan_urls
-
-files <- list.files("ppp_slices_full")
-files <- paste0("ppp_slices/",files)
-
-
-look_for_matches <- function(file){
-  
-  #Need to make a list of the ppp_borrowers from the sba loans
-  ppp_borrowers<-read_rds(file) %>%
-    as.list()
-  
-  # Extract the BorrowerName nested list from ppp_borrowers
-  ppp_borrowers <- ppp_borrowers$BorrowerName
-  
-  
-  # Look for single and multiple partial matches
-  char_possible_match <- charmatch(senator_companies,ppp_borrowers)
-  
-  # Create a dataframe of companies with single and multiple matches
-  # zero represents multiple matches, any other number represents single
-  matches_df <- tibble(
-    senator_companies = senator_companies,
-    match = char_possible_match) %>%
-    filter(!is.na(match))
-  
-  # Make a dataframe of ppp_borrowers
-  ppp_borrowers <- ppp_borrowers %>%
-    as_tibble() %>%
-    rename(BorrowerName=value)
-  
-  multiple_matches_df <- matches_df %>%
-    filter(match == "0")
-  
-  single_matches_df <- matches_df %>%
-    filter(match != "0")
-  
-  multiple_match_list <- multiple_matches_df %>%
-    select(senator_companies) %>%
-    as.list()
-  
-  multiple_match_list <- multiple_match_list$senator_companies
-  
-  multiple_matches_with_senator_companies <- tibble()
-  
-  # Loop through multiple matches
-  for (multiple_match in multiple_match_list) {
-    temp <- ppp_borrowers %>%
-      filter(str_detect(BorrowerName,multiple_match)) %>%
-      mutate(senator_companies = multiple_match) %>%
-      select(senator_companies,BorrowerName) %>%
-      mutate(match_type = "multiple")
-    
-    multiple_matches_with_senator_companies <- multiple_matches_with_senator_companies %>%
-      bind_rows(temp)
-    
-    
-  }
-  
-
-  # create ppp dataframe
-  ppp_borrowers <- ppp_borrowers %>%
-    mutate(match = row_number())
-  
-  # connect senator companies to matches
-  single_matches_with_senator_companies <- single_matches_df %>%
-    inner_join(ppp_borrowers) %>%
-    select(-match) %>%
-    mutate(match_type="single")
-  
-  matches_with_senator_companies <- single_matches_with_senator_companies %>%
-    bind_rows(multiple_matches_with_senator_companies) %>%
-    mutate(file_location = file)
-  
- # Bind to all match results
-  all_match_results <<- all_match_results %>%
-    bind_rows(matches_with_senator_companies) 
-  
-  
-  
-}  
-  
-lapply(files, look_for_matches)
-
-all_match_results <<- all_match_results %>%
-  inner_join(senator_ownership_data, by=c("senator_companies" = "cleaned_asset_name")) 
-results_filtered <- all_match_results %>%
-  filter(!is.na(state))
-
-x <- all_match_results %>%
-  group_by(senator_companies) %>%
-  count() %>%
-  arrange(desc(n))
+#test<-read_rds("ppp_slices/file_01_100000.rds")
+#This test should show we did everything right, which we did. 
 
 ```
+
+
+This code below is for our final join. We sliced the datasets again to isolate the rows that matched in our initial matching function (all_match_results) from each PPP Slice.
+
+
+```{r}
+library(fs)
+#Note: the original path was not working properly on my computer (the way it should of been done using the list.files example, so I had to look this package up and how to execute a for loop for it. Here was a youtube tutorial,https://www.youtube.com/watch?v=An1bUIg-nVM. So all credit to Business Science's channel )
+
+files <-fs::dir_ls("ppp_slices/")
+
+file_contents <- list()
+
+for(x in seq_along(files)){
+  file_contents[[x]] <-read_rds(
+    file = files[[x]]
+  )
+}
+file_contents <-file_contents %>%
+  bind_rows()
+
+#We gathered the all_match_results and wrote it as an rds file for convenience. 
+#This joined everything together 
+Matching_join<-all_match_results %>%
+  inner_join(file_contents, by=c("BorrowerName" = "BorrowerName"))
+#This filtered the na's of the states since we want to match the PPP_slices state column with the all_match_results state column. 
+results_filtered_v2 <- Matching_join %>%
+  filter(!is.na(state)) 
+state_matching <- results_filtered_v2 %>%
+  mutate(state_match= case_when(
+    state==BorrowerState ~ TRUE)) %>%
+    filter(!is.na(state_match)) %>%
+    distinct()
+
+#We created a csv file to cleanup the matching data further with excel. 
+write_csv(state_matching,"data/state_matching.csv")
+
+
+
+```
+## Possible Matches That we cleaned in excel
+```{r}
+Possible_matches_filtered <-read_csv("data/Possible_final_matches.csv")
+Possible_matches_filtered
+```
+There has to be more though. While we went through our initial start up, we thought companies like Meow Wolf Inc, Angus Farms LLC, and Mathis Farms would come through as a match. I feel that those are out there somewhere. 

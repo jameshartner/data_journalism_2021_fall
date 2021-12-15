@@ -1,0 +1,638 @@
+senator_companies,BorrowerName,match_type,file_location,senator_full_name,asset,state,asset_cleaned,BorrowerAddress,BorrowerState,JobsReported,ForgivenessAmount,state_match
+DOYON,DOYON REMOTE FACILITIES & SERVICES LLC,single,ppp_slices/file_01_100000.rds,daniel s sullivan,"Doyon
+ Limited
+ Description: Alaska Native Claims
+ Settlement Act regional corporation (Fairbanks,
+ AK)",AK,Doyon Limited,11500 C St Ste 150,AK,5,NA,TRUE
+BAAN O YEEL KON,BAAN O YEEL KON CORPORATION,multiple,ppp_slices/file_01_100000.rds,daniel s sullivan,"Baan O Yeel
+ Kon
+ Description: Alaska Native Claims
+ Settlement Act village corporation (Rampart, AK)",AK,"Baan O Yeel
+  Kon",529 6th Ave Ste 202,AK,1,NA,TRUE
+BAAN O YEEL KON,BAAN O YEEL KON CORPORATION,multiple,ppp_slices/file_01_100000.rds,daniel s sullivan,"Baan O Yeel
+ Kon
+ Description: Alaska Native Claims
+ Settlement Act village corporation (Rampart, AK)",AK,"Baan O Yeel
+  Kon",PO BOXPO Box 74381,AK,1,8251.9,TRUE
+PICACHO,PICACHO PEAK CONSTRUCTION LLC,multiple,ppp_slices/file_01_400000.rds,ron johnson,"Orchard at
+ Picacho, LLC (0.73% Ownership Interest)
+ Company: Orchard at Picacho, LLC
+ (Picacho, AZ) Description: Land
+ Development",AZ,"Orchard at
+  Picacho, LLC",2925 E Riggs Rd,AZ,2,41947.82,TRUE
+PICACHO,"PICACHO CONCRETE STRUCTURES, LLC",multiple,ppp_slices/file_01_400000.rds,ron johnson,"Orchard at
+ Picacho, LLC (0.73% Ownership Interest)
+ Company: Orchard at Picacho, LLC
+ (Picacho, AZ) Description: Land
+ Development",AZ,"Orchard at
+  Picacho, LLC",4619 E Pinto Dr,AZ,4,22207.93,TRUE
+FITZ FRAMES,"FITZ FRAMES, INC",single,ppp_slices/file_01_500000.rds,ron l wyden,"Fitz Frames,
+ Inc.
+ Description: Custom eyeglass
+ wear (Santa Monica, CA)",CA,"Fitz Frames,
+  Inc.",212 26th St Suite 139,CA,5,98812.41,TRUE
+PROMISE KEEPERS,PROMISE KEEPERS,single,ppp_slices/file_02_700000.rds,James P Lankford,"Promise Keepers
+ Colorado Springs, Colorado",CO,Promise Keepers,"720 Elkton Dr, Ste 200",CO,12,135353.64,TRUE
+RED SKY,RED SKY CONSULTING LLC,multiple,ppp_slices/file_02_700000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",3015 Wyandot St,CO,1,100770.5,TRUE
+RED SKY,RED SKY CONSULTING LLC,multiple,ppp_slices/file_02_700000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",3015 Wyandot St,CO,6,NA,TRUE
+RED SKY,RED SKY ROOFING INC,multiple,ppp_slices/file_02_700000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",6858 Mentha Dr,CO,6,NA,TRUE
+RED SKY,RED SKY ROOFING. INC.,single,ppp_slices/file_02_800000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",4833 FRONT STREET,CO,6,45560.53,TRUE
+RED SKY,RED SKY MANAGEMENT LLC,single,ppp_slices/file_02_900000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",475 17th St Ste 544,CO,2,8388.19,TRUE
+ROYAL POINCIANA,ROYAL POINCIANA CONDOMINIUM ASSOCIATION INC,single,ppp_slices/file_03_200000.rds,rick scott,"Refundable Club
+ Deposit 1
+ Company: Royal Poinciana (Naples,
+ FL) Filer comment: Included for purposes of
+ completeness.",FL,"Refundable Club
+  Deposit 1
+  Company: Royal Poinciana",1275 SW 46 Avenue,FL,5,60097.26,TRUE
+NEW GEORGIA,"NEW GEORGIA BAPTIST CHURCH, INC.",single,ppp_slices/file_04_200000.rds,Raphael Warnock,"New Georgia Project
+ Atlanta, GA",GA,New Georgia Project,6092 Mulberry Rock Rd,GA,20,58675.57,TRUE
+GEORGIA INTERFAITH,GEORGIA INTERFAITH POWER & LIGHT INC.,single,ppp_slices/file_04_200000.rds,Raphael Warnock,"Georgia Interfaith Public Policy Center, Inc.
+ Atlanta, GA",GA,"Georgia Interfaith Public Policy Center, Inc.",701 S Columbia Dr # 326,GA,4,29602.68,TRUE
+EBENEZER BAPTIST CHURCH,EBENEZER BAPTIST CHURCH WEST INC,single,ppp_slices/file_04_200000.rds,Raphael Warnock,"Ebenezer Baptist Church
+ Atlanta, GA",GA,Ebenezer Baptist Church,205 N CHASE ST,GA,15,58363.73,TRUE
+MARTIN LUTHER KING,MARTIN LUTHER KING SR. COMMUNITY RESOURCES COLLABORATIVE,single,ppp_slices/file_04_300000.rds,Raphael Warnock,"Martin Luther King, Sr. Resources Collaborative
+ Atlanta, GA",GA,"Martin Luther King, Sr. Resources Collaborative",101 Jackson St. NE,GA,1,21016.45,TRUE
+GEORGIA INTERFAITH,GEORGIA INTERFAITH POWER AND LIGHT,single,ppp_slices/file_04_300000.rds,Raphael Warnock,"Georgia Interfaith Public Policy Center, Inc.
+ Atlanta, GA",GA,"Georgia Interfaith Public Policy Center, Inc.","701 South Columbia Drive, #326",GA,3,22780.17,TRUE
+NEW GEORGIA,"NEW GEORGIA FENCE, LLC",multiple,ppp_slices/file_04_500000.rds,Raphael Warnock,"New Georgia Project
+ Atlanta, GA",GA,New Georgia Project,1568 Townsend Rd,GA,4,17214,TRUE
+NEW GEORGIA,NEW GEORGIA FENCE COMPANY,multiple,ppp_slices/file_04_500000.rds,Raphael Warnock,"New Georgia Project
+ Atlanta, GA",GA,New Georgia Project,1568 Townsend Rd,GA,5,11919.1,TRUE
+OSHIMA & ITOMURA,OSHIMA & ITOMURA ATTORNEYS AT LAW A LAW CORPORATION,single,ppp_slices/file_04_700000.rds,mazie k hirono,"Oshima &
+ Itomura, AAL, ALC
+ 
+ Description: Law Firm (Honolulu,
+ HI)",HI,"Oshima &
+  Itomura, AAL, ALC",841 Bishop Street,HI,6,96013.33,TRUE
+CRAPO,CRAPO FARMS,multiple,ppp_slices/file_04_900000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",130 E Industrial Park Road,ID,58,91871.23,TRUE
+CRAPO,CRAPO FARMS,multiple,ppp_slices/file_04_900000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,130 E Industrial Park Road,ID,58,91871.23,TRUE
+CRAPO,HOLDEN KIDWELL HAHN & CRAPO,multiple,ppp_slices/file_04_900000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",1000 Riverwalk Dr,ID,10,89959.5,TRUE
+CRAPO,HOLDEN KIDWELL HAHN & CRAPO,multiple,ppp_slices/file_04_900000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,1000 Riverwalk Dr,ID,10,89959.5,TRUE
+CRAPO,CRAPO BROTHERS,multiple,ppp_slices/file_04_900000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",130 E Industrial Park Rd,ID,62,81997.18,TRUE
+CRAPO,CRAPO BROTHERS,multiple,ppp_slices/file_04_900000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,130 E Industrial Park Rd,ID,62,81997.18,TRUE
+CRAPO,"HOLDEN, KIDWELL, HAHN & CRAPO",multiple,ppp_slices/file_04_900000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC","1000 Riverwalk Drive, Suite",ID,10,57909.59,TRUE
+CRAPO,"HOLDEN, KIDWELL, HAHN & CRAPO",multiple,ppp_slices/file_04_900000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,"1000 Riverwalk Drive, Suite",ID,10,57909.59,TRUE
+CRAPO,"CRAPO'S CUSTOM APPLICATORS, INC.",multiple,ppp_slices/file_04_900000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",130 E INDUSTRIAL PARK RD.,ID,4,27926.91,TRUE
+CRAPO,"CRAPO'S CUSTOM APPLICATORS, INC.",multiple,ppp_slices/file_04_900000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,130 E INDUSTRIAL PARK RD.,ID,4,27926.91,TRUE
+GREENWAVE,GREENWAVE LAWN SERVICE LLC,single,ppp_slices/file_06_300000.rds,john n kennedy,"Greenwave Property
+ LLC - 1/3 interest
+ 
+ Company: Greenwave Property LLC
+ (Madisonville,
+ Louisiana) Description: LLC Filer
+ comment: Real estate holding company; this represents gross
+ income (wife's share)",LA,Greenwave Property LLC,10633 Flintwood Ave,LA,1,NA,TRUE
+TCHOUPITOULAS,TCHOUPITOULAS BARATHON L3C,single,ppp_slices/file_06_300000.rds,john n kennedy,"Tchoupitoulas
+ Property LLC - 1/2 interest
+ 
+ Company: Tchoupitoulas Property LLC
+ (Metairie, LA) Description: LLC Filer
+ comment: Real estate holding company; this represents gross
+ income (wife's share)",LA,"Tchoupitoulas
+  Property LLC",4907 Magazine St,LA,1,493.16,TRUE
+CHURCHILL COFFEE,"CHURCHILL COFFEE COMPANY, LLC",single,ppp_slices/file_07_300000.rds,roy blunt,"Churchill Coffee
+ LTD Springfield MO
+ Company: Churchill Coffee LTD
+ Springfield MO (Springfield,
+ MO) Description: Roaster and Retailer of
+ Coffee",MO,"Churchill Coffee
+  LTD Springfield MO","3119 S Scenic Ave, Ste A",MO,8,41769.15,TRUE
+SHAHEEN ENTERPRISES,SHAHEEN ENTERPRISES LLC,single,ppp_slices/file_08_200000.rds,jeanne shaheen,"Shaheen
+ Enterprises, LLC
+ 
+ Company: Shaheen Enterprises, LLC
+ (Dover, NH) Description: Holding company of
+ NH",NH,"Shaheen
+  Enterprises, LLC",148 AMHERST ST,NH,1,11837.15,TRUE
+THE SALON,THE SALON AT 903 CENTRAL LLC,multiple,ppp_slices/file_08_200000.rds,jeanne shaheen,"The Salon,
+ LLC
+ Company: The Salon, LLC (Dover,
+ NH) Description: Beauty salon Filer
+ comment: Shaheen Enterprises, LLC has a 1/2 interest in The
+ Salon. Sold below the reporting threshold on 12/31/2020.",NH,"The Salon,
+  LLC",903 Central Ave,NH,7,32247.27,TRUE
+BASS REAL ESTATE,"BASS REAL ESTATE, LLC.",single,ppp_slices/file_08_700000.rds,ron l wyden,"Bass Real Estate
+ LLC
+ Company: Bass Real Estate LLC (New
+ York, NY) Description: Commercial Real Estate
+ holding Filer comment: Holdings: 826 Broadway, New
+ York, NY 10003",NY,"Bass Real Estate
+  LLC",826 Broadway,NY,6,111550,TRUE
+LEVEQUE,LEVEQUE PARKING PARTNERS LLC,single,ppp_slices/file_08_900000.rds,ron l wyden,"Leveque Parking
+ Partners LLC
+ 
+ Company: Leveque Parking Partners LLC
+ (New York, NY) Description: Commercial Real
+ Estate",NY,"Leveque Parking
+  Partners LLC",6 W 20TH ST FL 5,NY,4,26827.9,TRUE
+LEVEQUE,LEVEQUE AND BAZELAIS LLC,multiple,ppp_slices/file_09_200000.rds,ron l wyden,"Leveque Parking
+ Partners LLC
+ 
+ Company: Leveque Parking Partners LLC
+ (New York, NY) Description: Commercial Real
+ Estate",NY,"Leveque Parking
+  Partners LLC",245 Hawthorne St Apt D4,NY,1,15070.27,TRUE
+LEVEQUE,LEVEQUE GROUP LLC,multiple,ppp_slices/file_09_200000.rds,ron l wyden,"Leveque Parking
+ Partners LLC
+ 
+ Company: Leveque Parking Partners LLC
+ (New York, NY) Description: Commercial Real
+ Estate",NY,"Leveque Parking
+  Partners LLC",4712 Broadway N/A,NY,1,11093.02,TRUE
+LEVEQUE,LISA LEVEQUE,multiple,ppp_slices/file_09_200000.rds,ron l wyden,"Leveque Parking
+ Partners LLC
+ 
+ Company: Leveque Parking Partners LLC
+ (New York, NY) Description: Commercial Real
+ Estate",NY,"Leveque Parking
+  Partners LLC",1210 Evergreen Ave Apt 4,NY,1,NA,TRUE
+LEVEQUE,"LEVEQUE AND BAZELAIS, LLC",single,ppp_slices/file_09_300000.rds,ron l wyden,"Leveque Parking
+ Partners LLC
+ 
+ Company: Leveque Parking Partners LLC
+ (New York, NY) Description: Commercial Real
+ Estate",NY,"Leveque Parking
+  Partners LLC",348 W 145TH ST APT 4R,NY,1,8075,TRUE
+RIVERTOWN,RIVERTOWN DENTAL CARE INC.,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",702 COUNTRY CLUB DR,SC,6,85401.96,TRUE
+RIVERTOWN,"RIVERTOWN CONSTRUCTION SERVICES, LLC",multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",4054 RIDGEWOOD DR,SC,9,81526.61,TRUE
+RIVERTOWN,RIVERTOWN PHARMACY INC,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",4092 Hagwood Circle,SC,11,81375.56,TRUE
+RIVERTOWN,"SDI, RIVERTOWN COMMONS, LLC",multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",200 Chamberlin Road,SC,21,79759.7,TRUE
+RIVERTOWN,RIVERTOWNE FAMILY DENTISTRY,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",2023 HIGHWAY,SC,6,66308.1,TRUE
+RIVERTOWN,RIVERTOWNE FAMILY DENTISTRY,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",2023 HIGHWAY,SC,6,66480.51,TRUE
+RIVERTOWN,RIVERTOWN PROPERTY INSPECTION,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",1203 44th Ave Suite 111,SC,7,59866.78,TRUE
+RIVERTOWN,RIVERTOWN AUTOMOTIVE LLC,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",3200 Hwy 319 E,SC,5,52733.76,TRUE
+RIVERTOWN,RIVERTOWN FAMILY MEDICINE PC,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",1210 Main St.,SC,5,34403.34,TRUE
+RIVERTOWN,RIVERTOWN CHILD DEVELOPMENT CENTER INC. LLC,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",1911 Main St,SC,9,24790.82,TRUE
+RIVERTOWN,RIVERTOWN CHILD DEVELOPMENT CENTER,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",1911 N MAIN ST,SC,6,21364.37,TRUE
+RIVERTOWN,RIVERTOWN CONSTRUCTION CONSULTING INC,multiple,ppp_slices/file_10_500000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",241 Dartmoor Ct,SC,3,20943.3,TRUE
+RIVERTOWN,RIVERTOWN CABINETRY INC,multiple,ppp_slices/file_10_600000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",307 Beaty St,SC,4,18065.1,TRUE
+RIVERTOWN,RIVERTOWN CABINETRY INC,multiple,ppp_slices/file_10_600000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",307 BEATY ST,SC,4,18128.22,TRUE
+RIVERTOWN,RIVERTOWN GUN DEPOT LLC,multiple,ppp_slices/file_10_600000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",1301 B HWY 501,SC,4,13037.48,TRUE
+RIVERTOWN,"RIVERTOWN LAW GROUP, LLC",multiple,ppp_slices/file_10_600000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",908 4th Ave.,SC,2,8144.19,TRUE
+RIVERTOWN,RIVERTOWN ACCOUNTING INC,multiple,ppp_slices/file_10_600000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",2579 main st,SC,1,5033.01,TRUE
+RIVERTOWN,RIVERTOWN AUCTION II,multiple,ppp_slices/file_10_600000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",2705 Hwy 501 E,SC,1,2526.85,TRUE
+RIVERTOWN,RIVERTOWN ROASTERS ON MAIN,multiple,ppp_slices/file_10_600000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",337 MAIN STREET,SC,3,1042.71,TRUE
+LOCALS LOVE US,"LOCALS LOVE US, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Locals Love Us,
+ LLC
+ Company: Locals Love Us, LLC (Sioux
+ Falls, SD) Description: Business Advertisement
+ and Marketing",SD,"Locals Love Us,
+  LLC",330 N Main Ave,SD,5,46158.77,TRUE
+LOCALS LOVE US,LOCALS LOVE US LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Locals Love Us,
+ LLC
+ Company: Locals Love Us, LLC (Sioux
+ Falls, SD) Description: Business Advertisement
+ and Marketing",SD,"Locals Love Us,
+  LLC",330 N Main Ave Ste 302,SD,4,45315,TRUE
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog LLU,
+ LLC
+ Company: Bird Dog LLU, LLC (Sioux
+ Falls, SD) Description: Marketing
+ Company",SD,"Bird Dog LLU,
+  LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality Fund I, LLC
+ 
+ Company: Bird Dog Hospitality Fund I,
+ LLC (Sioux Falls, SD) Description: Business
+ Entity which holds underlying assets. Filer comment:
+ This asset name was previously listed as Bird Dog Hospitality Fund
+ in last years filing. The asset name was only changed to reflect a
+ more accurate description",SD,"Bird Dog
+  Hospitality Fund I, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality I, LLC
+ 
+ Company: Bird Dog Hospitality I, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality I, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality II, LLC
+ 
+ Company: Bird Dog Hospitality II, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality II, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality III, LLC
+ 
+ Company: Bird Dog Hospitality III, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality III, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality IV, LLC
+ 
+ Company: Bird Dog Hospitality IV, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality IV, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality V, LLC
+ 
+ Company: Bird Dog Hospitality V, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality V, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE
+BIRD DOG,BIRD DOG PIZZA I  LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog LLU,
+ LLC
+ Company: Bird Dog LLU, LLC (Sioux
+ Falls, SD) Description: Marketing
+ Company",SD,"Bird Dog LLU,
+  LLC",817 S Minnesota Ave,SD,11,70785,TRUE
+BIRD DOG,BIRD DOG PIZZA I  LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality Fund I, LLC
+ 
+ Company: Bird Dog Hospitality Fund I,
+ LLC (Sioux Falls, SD) Description: Business
+ Entity which holds underlying assets. Filer comment:
+ This asset name was previously listed as Bird Dog Hospitality Fund
+ in last years filing. The asset name was only changed to reflect a
+ more accurate description",SD,"Bird Dog
+  Hospitality Fund I, LLC",817 S Minnesota Ave,SD,11,70785,TRUE
+BIRD DOG,BIRD DOG PIZZA I  LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality I, LLC
+ 
+ Company: Bird Dog Hospitality I, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality I, LLC",817 S Minnesota Ave,SD,11,70785,TRUE
+BIRD DOG,BIRD DOG PIZZA I  LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality II, LLC
+ 
+ Company: Bird Dog Hospitality II, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality II, LLC",817 S Minnesota Ave,SD,11,70785,TRUE
+BIRD DOG,BIRD DOG PIZZA I  LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality III, LLC
+ 
+ Company: Bird Dog Hospitality III, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality III, LLC",817 S Minnesota Ave,SD,11,70785,TRUE
+BIRD DOG,BIRD DOG PIZZA I  LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality IV, LLC
+ 
+ Company: Bird Dog Hospitality IV, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality IV, LLC",817 S Minnesota Ave,SD,11,70785,TRUE
+BIRD DOG,BIRD DOG PIZZA I  LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality V, LLC
+ 
+ Company: Bird Dog Hospitality V, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality V, LLC",817 S Minnesota Ave,SD,11,70785,TRUE
+MAINSTREET,MAINSTREET MUNCHKINS,single,ppp_slices/file_10_700000.rds,"william f hagerty, iv","MainStreet
+ Management
+ 
+ Company: MainStreet Management
+ (Nashville, TN) Description: Pass-through
+ account",TN,"MainStreet
+  Management",587 MAIN ST,TN,24,49322.58,TRUE
+MAINSTREET,MAINSTREET OF ATHENS INC.,multiple,ppp_slices/file_10_900000.rds,"william f hagerty, iv","MainStreet
+ Management
+ 
+ Company: MainStreet Management
+ (Nashville, TN) Description: Pass-through
+ account",TN,"MainStreet
+  Management",123 W Washington Ave,TN,1,4988.38,TRUE
+MAINSTREET,"MAINSTREET OF ATHENS, INC.",multiple,ppp_slices/file_10_900000.rds,"william f hagerty, iv","MainStreet
+ Management
+ 
+ Company: MainStreet Management
+ (Nashville, TN) Description: Pass-through
+ account",TN,"MainStreet
+  Management",123 W WASHINGTON AVE,TN,1,4748.83,TRUE
+CARONA,CARONARDA BENBOW,single,ppp_slices/file_11_500000.rds,rand paul,"Carona
+ Limited
+ 
+ Company: Carona Limited (Lake Jackson,
+ TX) Description: Rental property.",TX,"Carona
+  Limited",2321 Rockridge Dr,TX,1,19185.26,TRUE
+CRAPO,CRAPO HOLDINGS LLC,single,ppp_slices/file_11_900000.rds,michael d crapo,"Crapo Enterprises
+ LLC
+ 
+ Company: Crapo Enterprises LLC
+ (Bountiful, UT) Description: Business entity
+ that holds residential property",UT,"Crapo Enterprises
+  LLC",1550 South 552 East,UT,1,2628.36,TRUE
+CRAPO,CRAPO HOLDINGS LLC,single,ppp_slices/file_11_900000.rds,Michael D Crapo,"Crapo Enterprises LLC
+ Bountiful, UT",UT,Crapo Enterprises LLC,1550 South 552 East,UT,1,2628.36,TRUE
+DOYON,"DOYON DRILLING, INC.",multiple,ppp_slices/file_us_100000.rds,daniel s sullivan,"Doyon
+ Limited
+ Description: Alaska Native Claims
+ Settlement Act regional corporation (Fairbanks,
+ AK)",AK,Doyon Limited,11500 C Street,AK,379,963802.85,TRUE
+DOYON,DOYON ASSOCIATED SERVICES LLC,multiple,ppp_slices/file_us_100000.rds,daniel s sullivan,"Doyon
+ Limited
+ Description: Alaska Native Claims
+ Settlement Act regional corporation (Fairbanks,
+ AK)",AK,Doyon Limited,615 Bidwill Ave Ste 100,AK,9,NA,TRUE
+TAB PRODUCTS,TAB PRODUCTS CO LLC,multiple,ppp_slices/file_us_1000000.rds,sheldon whitehouse,"MS TP Ltd
+ Partnership
+ 
+ Company: Tab Products (Mayville,
+ WI) Description: Sale of Office
+ Supplies Filer comment: Value is between $0 and
+ $15,000. Ordinary loss for 2020 was $22,990.",WI,Tab Products,605 FOURTH ST,WI,101,1769802.21,TRUE
+TAB PRODUCTS,TAB PRODUCTS CO LLC,multiple,ppp_slices/file_us_1000000.rds,sheldon whitehouse,"MS TP Ltd
+ Partnership
+ 
+ Company: Tab Products (Mayville,
+ WI) Description: Sale of Office
+ Supplies Filer comment: Value is between $0 and
+ $15,000. Ordinary loss for 2020 was $22,990.",WI,Tab Products,605 4th St,WI,248,1639683.78,TRUE
+TAB PROD,TAB PRODUCTS CO LLC,multiple,ppp_slices/file_us_1000000.rds,sheldon whitehouse,"TAB Prod Co LLC (a
+ holding of T Acq Ltd)
+ Company: TAB Prod Co LLC (Mayville,
+ WI) Description: Sale of office
+ supplies",WI,TAB Prod Co LLC,605 FOURTH ST,WI,101,1769802.21,TRUE
+TAB PROD,TAB PRODUCTS CO LLC,multiple,ppp_slices/file_us_1000000.rds,sheldon whitehouse,"TAB Prod Co LLC (a
+ holding of T Acq Ltd)
+ Company: TAB Prod Co LLC (Mayville,
+ WI) Description: Sale of office
+ supplies",WI,TAB Prod Co LLC,605 4th St,WI,248,1639683.78,TRUE
+PHARMACA,"PHARMACAL RESEARCH LABORATORIES, INC",single,ppp_slices/file_us_200000.rds,rick scott,"Account Receivable
+ from Pharmaca Investments, LLC
+ Company: Pharmaca Investments, LLC
+ (Rowayton, CT)",CT,"Pharmaca Investments, LLC",562 Captain Neville Drive,CT,28,423932.74,TRUE
+PHARMACA,"PHARMACAL RESEARCH LABORATORIES, INC",single,ppp_slices/file_us_200000.rds,rick scott,"Pharmaca
+ Investments, LLC
+ 
+ Company: Pharmaca Investments, LLC
+ (Rowayton, CT) Description: Investment holding
+ company",CT,"Pharmaca
+  Investments, LLC",562 Captain Neville Drive,CT,28,423932.74,TRUE
+NEW GEORGIA,NEW GEORGIA PROJECT INC.,single,ppp_slices/file_us_300000.rds,Raphael Warnock,"New Georgia Project
+ Atlanta, GA",GA,New Georgia Project,65 Courtland st,GA,95,486391.56,TRUE
+EBENEZER BAPTIST CHURCH,"EBENEZER BAPTIST CHURCH OF ATLANTA, GEORGIA, INC.",single,ppp_slices/file_us_300000.rds,Raphael Warnock,"Ebenezer Baptist Church
+ Atlanta, GA",GA,Ebenezer Baptist Church,101 Jackson Street N.E.,GA,25,182365.28,TRUE
+SYMCO,SYMCO GROUP INC,multiple,ppp_slices/file_us_300000.rds,sheldon whitehouse,"Symco Group Inc
+ (inv of Seaview Mezzanine, LP
+ Company: Symco Group Inc (Buford,
+ GA) Description: solution provider to print
+ production, etc",GA,Symco Group Inc,5012 BRISTOL INDUSTRIAL WAY Suite 105,GA,16,NA,TRUE
+SYMCO,SYMCO GROUP INC,multiple,ppp_slices/file_us_300000.rds,sheldon whitehouse,"Symco Group Inc
+ (inv of Seaview Mezzanine, LP
+ Company: Symco Group Inc (Buford,
+ GA) Description: solution provider to print
+ production, etc",GA,Symco Group Inc,5012 Bristol Industrial Way Ste 105,GA,16,NA,TRUE
+CRAPO,"CRAPO, LTD.",multiple,ppp_slices/file_us_400000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",130 E Industrial Road,ID,52,470560.09,TRUE
+CRAPO,"CRAPO, LTD.",multiple,ppp_slices/file_us_400000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,130 E Industrial Road,ID,52,470560.09,TRUE
+CRAPO,"CRAPO TRUCKING, INC.",multiple,ppp_slices/file_us_400000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",130 E Industrial Park Road,ID,21,178695.28,TRUE
+CRAPO,"CRAPO TRUCKING, INC.",multiple,ppp_slices/file_us_400000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,130 E Industrial Park Road,ID,21,178695.28,TRUE
+ATLAS-HERITAGE,ATLAS-HERITAGE TITLE LLC,single,ppp_slices/file_us_600000.rds,jeanne shaheen,"Atlas-Heritage
+ Title Company
+ Company: Atlas-Heritage Title Co., LLC
+ (Dover, NH) Description: Title
+ services Filer comment: Shaheen Enterprises LLC has
+ had a ½ interest in this asset.",NH,"Atlas-Heritage
+  Title Company",903 CENTRAL AVE 5,NH,16,193944.47,TRUE
+STRAND BOOK,"STRAND BOOK STORES, INC",multiple,ppp_slices/file_us_700000.rds,ron l wyden,"Strand Book Store
+ Inc. (S-Corp)
+ Description: Book Store (New York,
+ NY)",NY,"Strand Book Store
+  Inc.",828 BROADWAY,NY,212,1769590,TRUE
+STRAND BOOK,"STRAND BOOK STORES, INC",multiple,ppp_slices/file_us_700000.rds,ron l wyden,"Strand at Columbus
+ Ave LLC
+ Company: Strand at Columbus Ave LLC
+ (New York, NY) Description: Book
+ Store",NY,"Strand at Columbus
+  Ave LLC",828 BROADWAY,NY,212,1769590,TRUE
+STRAND BOOK,STRAND BOOK STORE INC,multiple,ppp_slices/file_us_700000.rds,ron l wyden,"Strand Book Store
+ Inc. (S-Corp)
+ Description: Book Store (New York,
+ NY)",NY,"Strand Book Store
+  Inc.",828 Broadway Fl 10,NY,95,937866.4,TRUE
+STRAND BOOK,STRAND BOOK STORE INC,multiple,ppp_slices/file_us_700000.rds,ron l wyden,"Strand at Columbus
+ Ave LLC
+ Company: Strand at Columbus Ave LLC
+ (New York, NY) Description: Book
+ Store",NY,"Strand at Columbus
+  Ave LLC",828 Broadway Fl 10,NY,95,937866.4,TRUE
+RIVERTOWN,RIVERTOWN CREDIT LLC,single,ppp_slices/file_us_800000.rds,tim scott,"RIVERTOWN
+ INVESTMENTS, LLC (50% INTEREST)
+ 
+ Company: RIVERTOWN INVESTMENTS, LLC
+ (CHARLESTON, SC) Description: RESIDENTIAL REAL
+ ESTATE",SC,"RIVERTOWN
+  INVESTMENTS, LLC",3201 Hwy 701 N,SC,16,NA,TRUE
+FRED JONES ENTERPRISES,"FRED JONES ENTERPRISES, LLC",single,ppp_slices/file_us_800000.rds,"William F Hagerty, IV","Fred Jones Enterprises
+ Oklahoma City, Oklahoma",OK,Fred Jones Enterprises,"6200 SW 29th Street, Suite A",OK,104,1566303.23,TRUE
+BASE4,"BASE4 VENTURES, LLC",single,ppp_slices/file_us_900000.rds,mark r warner,"Base4 Group,
+ Inc.
+ Description: Wholesale
+ Company (Dallas, TX)",TX,"Base4 Group,
+  Inc.",4393 Sunbelt Drive,TX,22,444994.93,TRUE
+EAKIN PARTNERS,"EAKIN PARTNERS, LLC",multiple,ppp_slices/file_us_900000.rds,"william f hagerty, iv","Eakin Partners,
+ LLC
+ 
+ Company: Eakin Partners, LLC
+ (Nashville, Tennessee) Description: Local real
+ estate investments in Nashville, TN market",TN,"Eakin Partners,
+  LLC",1201 DEMONBREUN ST,TN,19,243350.98,TRUE
+EAKIN PARTNERS,EAKIN PARTNERS LLC,multiple,ppp_slices/file_us_900000.rds,"william f hagerty, iv","Eakin Partners,
+ LLC
+ 
+ Company: Eakin Partners, LLC
+ (Nashville, Tennessee) Description: Local real
+ estate investments in Nashville, TN market",TN,"Eakin Partners,
+  LLC",1201 Demonbreun St,TN,19,243152.3,TRUE

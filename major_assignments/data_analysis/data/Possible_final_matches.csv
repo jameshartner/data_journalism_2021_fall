@@ -1,0 +1,287 @@
+senator_companies,BorrowerName,match_type,file_location,senator_full_name,asset,state,asset_cleaned,BorrowerAddress,BorrowerState,JobsReported,ForgivenessAmount,state_match,address_alligned_with_senators_companies
+DOYON,DOYON REMOTE FACILITIES & SERVICES LLC,single,ppp_slices/file_01_100000.rds,daniel s sullivan,"Doyon
+ Limited
+ Description: Alaska Native Claims
+ Settlement Act regional corporation (Fairbanks,
+ AK)",AK,Doyon Limited,11500 C St Ste 150,AK,5,NA,TRUE,Yes
+BAAN O YEEL KON,BAAN O YEEL KON CORPORATION,multiple,ppp_slices/file_01_100000.rds,daniel s sullivan,"Baan O Yeel
+ Kon
+ Description: Alaska Native Claims
+ Settlement Act village corporation (Rampart, AK)",AK,"Baan O Yeel
+  Kon",PO BOXPO Box 74381,AK,1,8251.9,TRUE,Yes
+FITZ FRAMES,"FITZ FRAMES, INC",single,ppp_slices/file_01_500000.rds,ron l wyden,"Fitz Frames,
+ Inc.
+ Description: Custom eyeglass
+ wear (Santa Monica, CA)",CA,"Fitz Frames,
+  Inc.",212 26th St Suite 139,CA,5,98812.41,TRUE,Yes
+PROMISE KEEPERS,PROMISE KEEPERS,single,ppp_slices/file_02_700000.rds,James P Lankford,"Promise Keepers
+ Colorado Springs, Colorado",CO,Promise Keepers,"720 Elkton Dr, Ste 200",CO,12,135353.64,TRUE,Yes
+RED SKY,RED SKY CONSULTING LLC,multiple,ppp_slices/file_02_700000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",3015 Wyandot St,CO,1,100770.5,TRUE,Yes
+RED SKY,RED SKY CONSULTING LLC,multiple,ppp_slices/file_02_700000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",3015 Wyandot St,CO,6,NA,TRUE,Yes
+RED SKY,RED SKY ROOFING INC,multiple,ppp_slices/file_02_700000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",6858 Mentha Dr,CO,6,NA,TRUE,Yes
+RED SKY,RED SKY ROOFING. INC.,single,ppp_slices/file_02_800000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",4833 FRONT STREET,CO,6,45560.53,TRUE,Yes
+RED SKY,RED SKY MANAGEMENT LLC,single,ppp_slices/file_02_900000.rds,rick scott,"Refundable Club
+ Deposit 2
+ Company: Red Sky (Wolcott,
+ CO) Filer comment: Included for purposes of
+ completeness.",CO,"Refundable Club
+  Deposit 2
+  Red Sky",475 17th St Ste 544,CO,2,8388.19,TRUE,Yes
+ROYAL POINCIANA,ROYAL POINCIANA CONDOMINIUM ASSOCIATION INC,single,ppp_slices/file_03_200000.rds,rick scott,"Refundable Club
+ Deposit 1
+ Company: Royal Poinciana (Naples,
+ FL) Filer comment: Included for purposes of
+ completeness.",FL,"Refundable Club
+  Deposit 1
+  Company: Royal Poinciana",1275 SW 46 Avenue,FL,5,60097.26,TRUE,Yes
+NEW GEORGIA,"NEW GEORGIA BAPTIST CHURCH, INC.",single,ppp_slices/file_04_200000.rds,Raphael Warnock,"New Georgia Project
+ Atlanta, GA",GA,New Georgia Project,6092 Mulberry Rock Rd,GA,20,58675.57,TRUE,Yes
+GEORGIA INTERFAITH,GEORGIA INTERFAITH POWER & LIGHT INC.,single,ppp_slices/file_04_200000.rds,Raphael Warnock,"Georgia Interfaith Public Policy Center, Inc.
+ Atlanta, GA",GA,"Georgia Interfaith Public Policy Center, Inc.",701 S Columbia Dr # 326,GA,4,29602.68,TRUE,NA
+EBENEZER BAPTIST CHURCH,EBENEZER BAPTIST CHURCH WEST INC,single,ppp_slices/file_04_200000.rds,Raphael Warnock,"Ebenezer Baptist Church
+ Atlanta, GA",GA,Ebenezer Baptist Church,205 N CHASE ST,GA,15,58363.73,TRUE,Yes
+MARTIN LUTHER KING,MARTIN LUTHER KING SR. COMMUNITY RESOURCES COLLABORATIVE,single,ppp_slices/file_04_300000.rds,Raphael Warnock,"Martin Luther King, Sr. Resources Collaborative
+ Atlanta, GA",GA,"Martin Luther King, Sr. Resources Collaborative",101 Jackson St. NE,GA,1,21016.45,TRUE,Yes
+OSHIMA & ITOMURA,OSHIMA & ITOMURA ATTORNEYS AT LAW A LAW CORPORATION,single,ppp_slices/file_04_700000.rds,mazie k hirono,"Oshima &
+ Itomura, AAL, ALC
+ 
+ Description: Law Firm (Honolulu,
+ HI)",HI,"Oshima &
+  Itomura, AAL, ALC",841 Bishop Street,HI,6,96013.33,TRUE,Yes
+CHURCHILL COFFEE,"CHURCHILL COFFEE COMPANY, LLC",single,ppp_slices/file_07_300000.rds,roy blunt,"Churchill Coffee
+ LTD Springfield MO
+ Company: Churchill Coffee LTD
+ Springfield MO (Springfield,
+ MO) Description: Roaster and Retailer of
+ Coffee",MO,"Churchill Coffee
+  LTD Springfield MO","3119 S Scenic Ave, Ste A",MO,8,41769.15,TRUE,Yes
+SHAHEEN,SHAHEEN ENTERPRISES LLC,single,ppp_slices/file_08_200000.rds,jeanne shaheen,"Shaheen
+ Enterprises, LLC
+ 
+ Company: Shaheen Enterprises, LLC
+ (Dover, NH) Description: Holding company of
+ NH",NH,"Shaheen
+  Enterprises, LLC",148 AMHERST ST,NH,1,11837.15,TRUE,NA
+THE SALON,THE SALON AT 903 CENTRAL LLC,multiple,ppp_slices/file_08_200000.rds,jeanne shaheen,"The Salon,
+ LLC
+ Company: The Salon, LLC (Dover,
+ NH) Description: Beauty salon Filer
+ comment: Shaheen Enterprises, LLC has a 1/2 interest in The
+ Salon. Sold below the reporting threshold on 12/31/2020.",NH,"The Salon,
+  LLC",903 Central Ave,NH,7,32247.27,TRUE,Yes
+BASS REAL ESTATE,"BASS REAL ESTATE, LLC.",single,ppp_slices/file_08_700000.rds,ron l wyden,"Bass Real Estate
+ LLC
+ Company: Bass Real Estate LLC (New
+ York, NY) Description: Commercial Real Estate
+ holding Filer comment: Holdings: 826 Broadway, New
+ York, NY 10003",NY,"Bass Real Estate
+  LLC",826 Broadway,NY,6,111550,TRUE,Yes
+LEVEQUE,LEVEQUE PARKING PARTNERS LLC,single,ppp_slices/file_08_900000.rds,ron l wyden,"Leveque Parking
+ Partners LLC
+ 
+ Company: Leveque Parking Partners LLC
+ (New York, NY) Description: Commercial Real
+ Estate",NY,"Leveque Parking
+  Partners LLC",6 W 20TH ST FL 5,NY,4,26827.9,TRUE,Address Very Close
+LOCALS LOVE US,"LOCALS LOVE US, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Locals Love Us,
+ LLC
+ Company: Locals Love Us, LLC (Sioux
+ Falls, SD) Description: Business Advertisement
+ and Marketing",SD,"Locals Love Us,
+  LLC",330 N Main Ave,SD,5,46158.77,TRUE,Address Very Close
+LOCALS LOVE US,LOCALS LOVE US LLC,multiple,ppp_slices/file_10_600000.rds,mike rounds,"Locals Love Us,
+ LLC
+ Company: Locals Love Us, LLC (Sioux
+ Falls, SD) Description: Business Advertisement
+ and Marketing",SD,"Locals Love Us,
+  LLC",330 N Main Ave Ste 302,SD,4,45315,TRUE,Address Very Close
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog LLU,
+ LLC
+ Company: Bird Dog LLU, LLC (Sioux
+ Falls, SD) Description: Marketing
+ Company",SD,"Bird Dog LLU,
+  LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality Fund I, LLC
+ 
+ Company: Bird Dog Hospitality Fund I,
+ LLC (Sioux Falls, SD) Description: Business
+ Entity which holds underlying assets. Filer comment:
+ This asset name was previously listed as Bird Dog Hospitality Fund
+ in last years filing. The asset name was only changed to reflect a
+ more accurate description",SD,"Bird Dog
+  Hospitality Fund I, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality I, LLC
+ 
+ Company: Bird Dog Hospitality I, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality I, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality II, LLC
+ 
+ Company: Bird Dog Hospitality II, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality II, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality III, LLC
+ 
+ Company: Bird Dog Hospitality III, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality III, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality IV, LLC
+ 
+ Company: Bird Dog Hospitality IV, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality IV, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality V, LLC
+ 
+ Company: Bird Dog Hospitality V, LLC
+ (Sioux Falls, SD) Description: Business Entity
+ which holds underlying asset",SD,"Bird Dog
+  Hospitality V, LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"Bird Dog
+ Hospitality Fund II, LLC
+ 
+ Company: Bird Dog Hospitality Fund II,
+ LLC (Sioux Falls, SD) Description: Business
+ Entity which holds underlying asset",SD,"Bird Dog Hospitality Fund II,
+  LLC",221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"BDH2 -
+ Marshall
+ 
+ Company: Bird Dog Hospitality 2 (Sioux
+ Falls, SD) Description: Business Entity which
+ holds underlying asset",SD,Bird Dog Hospitality 2,221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"BDH2 -
+ Valentine
+ 
+ Company: Bird Dog Hospitality 2 (Sioux
+ Falls, SD) Description: Business Entity which
+ holds underlying asset",SD,Bird Dog Hospitality 2,221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"BDH2 - New
+ Ulm
+ 
+ Company: Bird Dog Hospitality 2 (Sioux
+ Falls, SD) Description: Business Entity which
+ holds underlying asset",SD,Bird Dog Hospitality 2,221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,mike rounds,"BDH2 -
+ Shoreview
+ 
+ Company: Bird Dog Hospitality 2 (Sioux
+ Falls, SD) Description: Business Entity which
+ holds underlying asset",SD,Bird Dog Hospitality 2,221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,Mike Rounds,"Bird Dog Hospitality Fund I
+ Sioux Falls, SD",SD,Bird Dog Hospitality Fund I,221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+BIRD DOG,"BIRD DOG EQUITY PARTNERS, LLC",multiple,ppp_slices/file_10_600000.rds,Mike Rounds,"Bird Dog Hospitality Fund II
+ Sioux Falls, SD",SD,Bird Dog Hospitality Fund II,221 S Phillips Ave Suite 200,SD,6,112887.39,TRUE,Yes
+CRAPO,CRAPO HOLDINGS LLC,single,ppp_slices/file_11_900000.rds,michael d crapo,"Crapo Enterprises
+ LLC
+ 
+ Company: Crapo Enterprises LLC
+ (Bountiful, UT) Description: Business entity
+ that holds residential property",UT,"Crapo Enterprises
+  LLC",1550 South 552 East,UT,1,2628.36,TRUE,Yes
+CRAPO,CRAPO HOLDINGS LLC,single,ppp_slices/file_11_900000.rds,Michael D Crapo,"Crapo Enterprises LLC
+ Bountiful, UT",UT,Crapo Enterprises LLC,1550 South 552 East,UT,1,2628.36,TRUE,Yes
+NEW GEORGIA,NEW GEORGIA PROJECT INC.,single,ppp_slices/file_us_300000.rds,Raphael Warnock,"New Georgia Project
+ Atlanta, GA",GA,New Georgia Project,65 Courtland st,GA,95,486391.56,TRUE,Yes
+EBENEZER BAPTIST CHURCH,"EBENEZER BAPTIST CHURCH OF ATLANTA, GEORGIA, INC.",single,ppp_slices/file_us_300000.rds,Raphael Warnock,"Ebenezer Baptist Church
+ Atlanta, GA",GA,Ebenezer Baptist Church,101 Jackson Street N.E.,GA,25,182365.28,TRUE,NA
+SYMCO,SYMCO GROUP INC,multiple,ppp_slices/file_us_300000.rds,sheldon whitehouse,"Symco Group Inc
+ (inv of Seaview Mezzanine, LP
+ Company: Symco Group Inc (Buford,
+ GA) Description: solution provider to print
+ production, etc",GA,Symco Group Inc,5012 BRISTOL INDUSTRIAL WAY Suite 105,GA,16,NA,TRUE,Yes
+SYMCO,SYMCO GROUP INC,multiple,ppp_slices/file_us_300000.rds,sheldon whitehouse,"Symco Group Inc
+ (inv of Seaview Mezzanine, LP
+ Company: Symco Group Inc (Buford,
+ GA) Description: solution provider to print
+ production, etc",GA,Symco Group Inc,5012 Bristol Industrial Way Ste 105,GA,16,NA,TRUE,Yes
+CRAPO,"CRAPO, LTD.",multiple,ppp_slices/file_us_400000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",130 E Industrial Road,ID,52,470560.09,TRUE,NA
+CRAPO,"CRAPO, LTD.",multiple,ppp_slices/file_us_400000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,130 E Industrial Road,ID,52,470560.09,TRUE,NA
+CRAPO,"CRAPO TRUCKING, INC.",multiple,ppp_slices/file_us_400000.rds,michael d crapo,"Crapo Estate
+ Holdings LLC
+ 
+ Company: Crapo Estate Holdings LLC
+ (Idaho Falls, ID) Description: Business entity
+ that holds ranchland",ID,"Crapo Estate
+  Holdings LLC",130 E Industrial Park Road,ID,21,178695.28,TRUE,NA
+CRAPO,"CRAPO TRUCKING, INC.",multiple,ppp_slices/file_us_400000.rds,Michael D Crapo,"Crapo Estate Holdings LLC
+ Idaho Falls, ID",ID,Crapo Estate Holdings LLC,130 E Industrial Park Road,ID,21,178695.28,TRUE,NA
+ATLAS-HERITAGE,ATLAS-HERITAGE TITLE LLC,single,ppp_slices/file_us_600000.rds,jeanne shaheen,"Atlas-Heritage
+ Title Company
+ Company: Atlas-Heritage Title Co., LLC
+ (Dover, NH) Description: Title
+ services Filer comment: Shaheen Enterprises LLC has
+ had a ½ interest in this asset.",NH,"Atlas-Heritage
+  Title Company",903 CENTRAL AVE 5,NH,16,193944.47,TRUE,Yes
+STRAND,"STRAND BOOK STORES, INC",multiple,ppp_slices/file_us_700000.rds,ron l wyden,"Strand Book Store
+ Inc. (S-Corp)
+ Description: Book Store (New York,
+ NY)",NY,"Strand Book Store
+  Inc.",828 BROADWAY,NY,212,1769590,TRUE,Yes
+STRAND,STRAND BOOK STORE INC,multiple,ppp_slices/file_us_700000.rds,ron l wyden,"Strand at Columbus
+ Ave LLC
+ Company: Strand at Columbus Ave LLC
+ (New York, NY) Description: Book
+ Store",NY,"Strand at Columbus
+  Ave LLC",828 Broadway Fl 10,NY,95,937866.4,TRUE,Yes
+FRED JONES ENTERPRISES,"FRED JONES ENTERPRISES, LLC",single,ppp_slices/file_us_800000.rds,"William F Hagerty, IV","Fred Jones Enterprises
+ Oklahoma City, Oklahoma",OK,Fred Jones Enterprises,"6200 SW 29th Street, Suite A",OK,104,1566303.23,TRUE,Yes
+BASE4,"BASE4 VENTURES, LLC",single,ppp_slices/file_us_900000.rds,mark r warner,"Base4 Group,
+ Inc.
+ Description: Wholesale
+ Company (Dallas, TX)",TX,"Base4 Group,
+  Inc.",4393 Sunbelt Drive,TX,22,444994.93,TRUE,Yes
+EAKIN PARTNERS,"EAKIN PARTNERS, LLC",multiple,ppp_slices/file_us_900000.rds,"william f hagerty, iv","Eakin Partners,
+ LLC
+ 
+ Company: Eakin Partners, LLC
+ (Nashville, Tennessee) Description: Local real
+ estate investments in Nashville, TN market",TN,"Eakin Partners,
+  LLC",1201 DEMONBREUN ST,TN,19,243350.98,TRUE,Yes
+EAKIN PARTNERS,EAKIN PARTNERS LLC,multiple,ppp_slices/file_us_900000.rds,"william f hagerty, iv","Eakin Partners,
+ LLC
+ 
+ Company: Eakin Partners, LLC
+ (Nashville, Tennessee) Description: Local real
+ estate investments in Nashville, TN market",TN,"Eakin Partners,
+  LLC",1201 Demonbreun St,TN,19,243152.3,TRUE,Yes
