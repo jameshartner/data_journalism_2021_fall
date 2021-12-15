@@ -44,6 +44,10 @@ Warnock’s name also tied back to three other assets that were seen in the PPP 
 
 The same can be said for other senators as well, like William F. Hagerty of Tennessee with his company of Eakin Partners, or Ron I Wyden of Oregon with his company Strand Book Stores Inc. Wyden’s and Hagerty’s both took out two different loans for their respective companies. 
 
+Wyden also had two more companies that matched in our final dataset. Those companies were Bass Real Estate and Leveque Parking. Leveque was a very close match, so it will need further review. 
+
+There were a few more senator assets that match exactly to the ppp_dataset like Mazie K Hirono and Oshima & Itomura Attorneys at Law, Jeanne Shaheen of Shaheen Enterprises LLC (Match needs further review) and The Salon (which matched exactly to the address from the PPP dataset), etc. 
+
 Pros and Cons: 
 
 Our datasets consisted of PPP listings from the SBA and senator-specific listings which outlined more targeted behavior on behalf of representatives. While the data was incredibly detailed, these datasets were also very dense, creating difficulty when it came time to fuzzy join sets together or clean/filter through them. A lot of the data was split between multiple different datasets as well (the PPP data was split among 13 different large files), which made cleaning an issue as well. Of course, working with such expansive and detailed data was a plus in terms of making concrete findings, and lends itself to further use going forward. We simply do not have machines powerful enough to efficiently run through this many variables, which resulted in us having to whittle our scope down more and more as the project progresses.
