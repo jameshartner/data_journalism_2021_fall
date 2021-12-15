@@ -755,7 +755,7 @@ mark r warner,"Interface Security
 mark r warner,"Revival LOC,
  LLC
  Description: Line of Credit -
- Manufacturer (Springfield, NJ)",NJ,Revival LOC,Revival 
+ Manufacturer (Springfield, NJ)",NJ,Revival LOC,Revival LOC
 mark r warner,"BSCP SBIC I,
  LP
  Description: Private
@@ -945,7 +945,7 @@ rand paul,"Alchemy,
  
  Company: Alchemy, LLC (Bowling Green,
  KY) Description: real estate",KY,"Alchemy,
-  LLC",Alchemy 
+  LLC",Alchemy LLC
 rand paul,"Carona
  Limited
  
@@ -1057,7 +1057,7 @@ jeanne shaheen,"Shaheen
  Company: Shaheen Enterprises, LLC
  (Dover, NH) Description: Holding company of
  NH",NH,"Shaheen
-  Enterprises, LLC",Shaheen
+  Enterprises, LLC",Shaheen Enterprises
 jeanne shaheen,"Route 125
  Associates
  Company: Route 125 Associates (Dover,
@@ -1114,7 +1114,7 @@ jeanne shaheen,"Shaheen
  Company: Shaheen Enterprises of Maine,
  LLC (York Beach, ME) Description: Holding
  company",ME,"Shaheen
-  Enterprises of Maine, LLC",Shaheen
+  Enterprises of Maine, LLC",Shaheen Enterprises
 tim scott,"RIVERTOWN
  INVESTMENTS, LLC (50% INTEREST)
  
@@ -1146,7 +1146,7 @@ christopher a coons,"TCS Lease
  Company: TCS Lease Management LLC
  (Sanibel Island, Florida) Description: Rental
  Real Estate",FL,"TCS Lease
-  Management LLC",TCS
+  Management LLC",TCS Lease Management
 mike braun,"Norman
  Contract
  Debtor: Charles & Betty
@@ -1166,7 +1166,7 @@ ron l wyden,"Strand Book Store
  Inc. (S-Corp)
  Description: Book Store (New York,
  NY)",NY,"Strand Book Store
-  Inc.",Strand
+  Inc.",Strand Book 
 ron l wyden,"Bass Book Trading,
  Inc (S-corp)
  Description: Book Trading (New
@@ -1222,7 +1222,7 @@ ron l wyden,"Strand at Columbus
  Company: Strand at Columbus Ave LLC
  (New York, NY) Description: Book
  Store",NY,"Strand at Columbus
-  Ave LLC",Strand
+  Ave LLC",Strand Book
 tom cotton,"SLG Solutions
  LLC
  
@@ -1281,10 +1281,10 @@ cindy hyde-smith,"BEEF
 mike rounds,"FRA, LLC
  
  Company: FRA, LLC (Pierre,
- SD) Description: Farm ownership",SD,"FRA, LLC",FRA
+ SD) Description: Farm ownership",SD,"FRA, LLC",FRA LLC
 mike rounds,"FRA Farm
  Description: Farm (Pierre,
- SD)",SD,FRA Farm,FRA
+ SD)",SD,FRA Farm,FRA Farm
 mike rounds,"Lake Sharpe
  Investments, LLC
  
@@ -1392,31 +1392,31 @@ mike rounds,"Bird Dog
  Company: Bird Dog Hospitality Fund II,
  LLC (Sioux Falls, SD) Description: Business
  Entity which holds underlying asset",SD,"Bird Dog Hospitality Fund II,
-  LLC",Bird Dog
+  LLC",Bird Dog Hospitality
 mike rounds,"BDH2 -
  Marshall
  
  Company: Bird Dog Hospitality 2 (Sioux
  Falls, SD) Description: Business Entity which
- holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog
+ holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog Hospitality
 mike rounds,"BDH2 -
  Valentine
  
  Company: Bird Dog Hospitality 2 (Sioux
  Falls, SD) Description: Business Entity which
- holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog
+ holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog Hospitality
 mike rounds,"BDH2 - New
  Ulm
  
  Company: Bird Dog Hospitality 2 (Sioux
  Falls, SD) Description: Business Entity which
- holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog
+ holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog Hospitality
 mike rounds,"BDH2 -
  Shoreview
  
  Company: Bird Dog Hospitality 2 (Sioux
  Falls, SD) Description: Business Entity which
- holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog
+ holds underlying asset",SD,Bird Dog Hospitality 2,Bird Dog Hospitality
 benjamin l cardin,"Venture BG,
  LLC
  Company: Venture BG, LLC (Baltimore,
@@ -1915,7 +1915,7 @@ Christopher Murphy,"Susan B Anthony Project
 Maggie Hassan,"Onadune, LLC
  Boston, MA",MA,"Onadune, LLC",Onadune
 Rand Paul,"Alchemy, LLC
- Bowling Green, KY",KY,"Alchemy, LLC",Alchemy
+ Bowling Green, KY",KY,"Alchemy, LLC",Alchemy LLC
 Tim Scott,"RIVERTOWN INVESTMENTS, LLC
  CHARLESTON, SC",SC,"RIVERTOWN INVESTMENTS, LLC",Rivertown Investments
 Tim Scott,"CLEMSON UNIVERSITY
@@ -1943,15 +1943,15 @@ Thomas H Tuberville,"Tiger Farms, LLC
 Jerry Moran,"University of Kansas School of Law, Board of Governors
  Lawrence, KS",KS,"University of Kansas School of Law, Board of Governors",NA
 Mike Rounds,"FRA, LLC
- Pierre, SD",SD,"FRA, LLC",FRA
+ Pierre, SD",SD,"FRA, LLC",FRA LLC
 Mike Rounds,"Lake Sharpe Investments, LLC
  Pierre, SD",SD,"Lake Sharpe Investments, LLC",Lake Sharpe Investments
 Mike Rounds,"Roundtable, LLC
  Fort Pierre/Lyman County, SD",SD,"Roundtable, LLC",Roundtable
 Mike Rounds,"Bird Dog Hospitality Fund I
- Sioux Falls, SD",SD,Bird Dog Hospitality Fund I,Bird Dog 
+ Sioux Falls, SD",SD,Bird Dog Hospitality Fund I,Bird Dog Hospitality
 Mike Rounds,"Bird Dog Hospitality Fund II
- Sioux Falls, SD",SD,Bird Dog Hospitality Fund II,Bird Dog
+ Sioux Falls, SD",SD,Bird Dog Hospitality Fund II,Bird Dog Hospitality
 Benjamin L Cardin,"University of Maryland Law School
  Baltimore, Md",MD,University of Maryland Law School,NA
 Benjamin L Cardin,"University of Maryland, Balto. Co.
@@ -1985,7 +1985,7 @@ Thomas J Ossoff,"The World Investigates Foundation
 Thomas J Ossoff,"Tailwind Media, LLC
  Atlanta, GA",GA,"Tailwind Media, LLC",Tailwind Media
 Thomas J Ossoff,"TWI Digital, LLC
- Atlanta, GA",GA,"TWI Digital, LLC",TWI
+ Atlanta, GA",GA,"TWI Digital, LLC",TWI Digital
 Thomas J Ossoff,"Insight TWI
  London, UK",UNITED KINGDOM,Insight TWI,Insight TWI
 Ron Johnson,"Grammie Jean Foundation, Inc.
@@ -2054,12 +2054,12 @@ marsha blackburn,"Strategic Sales Tactics IncBrentwood, TN",,Strategic Sales Tac
 catherine cortez masto,"Universal Security SpecialistsLas Vegas, Nevada",,Universal Security Specialists,Universal Security Specialists
 sheldon whitehouse,"Ocean ConservancyWashington, DC",,Ocean Conservancy,Ocean Conservancy
 sheldon whitehouse,"Atlantic CouncilWashington, DC",,Atlantic Council,NA
-jeanne shaheen,"Shaheen & GordonDover, NH",,Shaheen & Gordon,Shaheen
+jeanne shaheen,"Shaheen & GordonDover, NH",,Shaheen & Gordon,Shaheen & Gordon
 jeanne shaheen,"Emerald Group LLCMadbury, NH",,Emerald Group LLC,Emerald Group
 mike braun,"Finishing TouchesJasper, IN",,Finishing Touches,Finishing Touches
 ron l wyden,"Bass Book Trading, IncNew York, NY",,"Bass Book Trading, Inc",Bass Book Trading
 ron l wyden,"Bass Real Estate LLCNew York, NY",,Bass Real Estate LLC,Bass Real Estate
-ron l wyden,"Strand Book Store IncNew York, NY",,Strand Book Store Inc,Strand
+ron l wyden,"Strand Book Store IncNew York, NY",,Strand Book Store Inc,Strand Book Store
 tom cotton,"Hillsdale CollegeHillsdale, MI",,Hillsdale College,NA
 tom cotton,"SLG SolutionsMcLean, Virginia",,SLG Solutions,SLG Solutions
 cindy hyde-smith,"MATHIS FARMS, INCBROOKHAVEN, MS",,"MATHIS FARMS, INC",Mathis Farms
@@ -2077,7 +2077,7 @@ roy blunt,"Ardagh Group SALuxembourg, Luxembourg",,Ardagh Group SA,Ardagh Group
 sherrod brown,"Kent State UniversityKent, OH",,Kent State University,NA
 "robert p casey, jr","Drexel UniversityPhiladelphia, PA",,Drexel University,NA
 joshua d hawley,"Independent Women's ForumWashington, DC",,Independent Women's Forum,Independent Women's Forum
-joshua d hawley,"Kirkland & EllisWashington, DC",,Kirkland & Ellis,Kirkland
+joshua d hawley,"Kirkland & EllisWashington, DC",,Kirkland & Ellis,Kirkland & Ellis
 joshua d hawley,"Curators of the University of MissouriColumbia, MO",,Curators of the University of Missouri,NA
 joshua d hawley,"Guidepoint GlobalNew York, NY",,Guidepoint Global,Guidepoint Global
 michael f bennet,"University of Denver Law SchoolDenver, CO",,University of Denver Law School,NA
